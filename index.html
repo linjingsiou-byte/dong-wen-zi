@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="動文字 - 國小生互動語文學習桌遊網頁版。透過部首與偏旁部件的趣味拼字對戰，輕鬆提升認字量與造詞能力！">
+  <meta name="author" content="Antigravity">
+  <title>動文字 - 趣味國語文配對對戰網頁版</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 背景漂浮泡泡 -->
+  <div class="bg-bubbles" id="bg-bubbles"></div>
+
+  <!-- 網頁頭部 -->
+  <header>
+    <div class="logo" onclick="backToLobby()">
+      <div class="logo-icon">✍️</div>
+      <div class="logo-text">
+        <h1>動文字</h1>
+        <p>部首部件趣味對戰</p>
+      </div>
+    </div>
+    <div class="header-controls">
+      <button class="btn btn-secondary" id="theme-btn" onclick="toggleTheme()">🌙 太空暗黑</button>
+      <button class="btn btn-secondary" id="lobby-btn" onclick="backToLobby()">🏠 回大廳</button>
+    </div>
+  </header>
+
+  <!-- 主要內容區 -->
+  <main>
+
+    <!-- ==================== 1. 首頁大廳 (Lobby View) ==================== -->
+    <section id="view-lobby" class="view-section active">
+      <div class="lobby-grid">
+        <div class="lobby-hero">
+          <h2 class="lobby-title">解鎖你的文字力！<br><span>好玩有趣的「動文字」</span></h2>
+          <p class="lobby-desc">
+            「動文字」是一款風靡國小語文課堂的識字拼字桌遊。在這裡，你可以跟你的好朋友、同學一起挑戰組字反應力，在歡笑中輕鬆記住字根，瞬間提升造詞超能力！
+          </p>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; font-style: italic; line-height: 1.6;">
+            💡 本網頁參考賴秋江老師設計的「動文字」桌遊加以架設<br>
+            🛠️ 架設者：國立屏科實中(國小部)林敬修老師
+          </p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="showSetupScreen('speed')">🐯 雙人即時對戰 🐻</button>
+            <button class="btn btn-success" onclick="showSetupScreen('learn')" style="background-color: #2ec4b6; border-color: #2ec4b6; color: white;">🧠 自學組字挑戰</button>
+            <button class="btn btn-secondary" onclick="switchView('grid')">🔍 互動百格表</button>
+          </div>
+        </div>
+        <div class="mode-cards">
+          <!-- 模式 1：搶答對戰 -->
+          <div class="mode-card match-mode" data-mode="speed" id="mode-card-speed">
+            <div class="mode-icon">⚡</div>
+            <div class="mode-info">
+              <h3>雙人即時搶答賽</h3>
+              <p>看誰反應快！翻開中央部件，搶先按下按鈕，拼對部首並選出正確造詞者得分！</p>
+            </div>
+          </div>
+          <!-- 模式 2：回合接力 -->
+          <div class="mode-card relay-mode" data-mode="relay" id="mode-card-relay">
+            <div class="mode-icon">🤝</div>
+            <div class="mode-info">
+              <h3>雙人回合接力賽</h3>
+              <p>限時組字挑戰！雙方輪流在 30 秒內將桌上的部首與偏旁進行最多組配對與造詞！</p>
+            </div>
+          </div>
+          <!-- 模式 3：自學挑戰 -->
+          <div class="mode-card learn-mode" data-mode="learn" id="mode-card-learn">
+            <div class="mode-icon">🧠</div>
+            <div class="mode-info">
+              <h3>自學組字挑戰</h3>
+              <p>自主學習拼字！隨機出現目標字，自行選擇正確的部首與部件卡組合，聽讀音學詞彙！</p>
+            </div>
+          </div>
+          <!-- 互動百格表 -->
+          <div class="mode-card grid-mode" data-mode="grid" id="mode-card-grid">
+            <div class="mode-icon">📊</div>
+            <div class="mode-info">
+              <h3>部首部件百格表</h3>
+              <p>數位互動對照表，橫跨 14 個部首與 20 個精選部件，點擊查看對應國字與讀音！</p>
+            </div>
+          </div>
+          <!-- 部件大全 -->
+          <div class="mode-card dict-mode" data-mode="dict" id="mode-card-dict">
+            <div class="mode-icon">📖</div>
+            <div class="mode-info">
+              <h3>部件熱搜字典 (1-100)</h3>
+              <p>完整收錄編號 1 至 100 的熱門漢字偏旁字根，提供筆畫數與常見字翻面學習！</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ==================== 2. 遊戲設定畫面 (Setup View) ==================== -->
+    <section id="view-setup" class="view-section">
+      <div class="setup-box card-panel">
+        <h2 class="setup-title" id="setup-title">遊戲設定</h2>
+        <!-- 雙人對戰專屬欄位 -->
+        <div id="double-setup-fields">
+          <div class="form-group">
+            <label for="team-a-input">🐯 玩家/隊伍 A 名稱：</label>
+            <input type="text" id="team-a-input" class="form-control" placeholder="請輸入 A 隊名稱，如：石虎隊">
+          </div>
+          <div class="form-group">
+            <label for="team-b-input">🐻 玩家/隊伍 B 名稱：</label>
+            <input type="text" id="team-b-input" class="form-control" placeholder="請輸入 B 隊名稱，如：黑熊隊">
+          </div>
+        </div>
+        <!-- 單人自學專屬欄位 -->
+        <div id="single-setup-fields" style="display: none;">
+          <div class="form-group">
+            <label for="student-input">👤 學生姓名：</label>
+            <input type="text" id="student-input" class="form-control" placeholder="請輸入您的姓名，如：小明" value="學生">
+          </div>
+        </div>
+        <div class="form-group" id="rounds-group">
+          <label for="rounds-input" id="rounds-label">🎯 挑戰題數/回合數：</label>
+          <select id="rounds-input" class="form-control">
+            <!-- 由 JavaScript 動態填入選項 -->
+          </select>
+        </div>
+        <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center;">
+          <button class="btn btn-secondary" onclick="backToLobby()">返回大廳</button>
+          <button class="btn btn-primary" onclick="startGame()" id="start-game-btn">開始對戰！ 🚀</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. 雙人搶答對戰 (Speed Match Game View) ==================== -->
+    <section id="view-game-speed" class="view-section">
+      <!-- 狀態列 -->
+      <div class="game-status-bar">
+        <h3 id="speed-round-title">第 1 題</h3>
+        <div class="game-timer">
+          <div class="timer-circle"></div>
+          <span>搶答時間：</span>
+          <span id="speed-timer-val">15 秒</span>
+        </div>
+      </div>
+      
+      <!-- 搶答對戰佈局 (左: Player A | 中: 題目 | 右: Player B) -->
+      <div class="speed-layout">
+        <!-- Player A -->
+        <div class="player-panel team-a" id="panel-team-a">
+          <div class="player-header">
+            <div class="player-avatar">🐯</div>
+            <div class="player-name" id="speed-team-a-name">石虎隊</div>
+            <div class="player-score player-score-team-a" id="speed-score-a">0</div>
+          </div>
+          
+          <!-- 答題與手牌區 -->
+          <div class="player-hand-cards" id="hand-a"></div>
+          
+          <button class="buzz-btn buzz-btn-team-a" id="buzz-a" onclick="triggerBuzzer('A')">搶答<br>(按 A)</button>
+          
+          <!-- 造詞覆蓋層 -->
+          <div class="match-overlay" id="overlay-a" style="display: none;">
+            <h4>配對成功！請選擇正確造詞：</h4>
+            <div class="choice-grid"></div>
+          </div>
+        </div>
+        
+        <!-- 中央看板 -->
+        <div class="center-board">
+          <h4>偏旁部件題目</h4>
+          <div id="question-display">
+            <!-- 題目卡片會由 JavaScript 渲染在此 -->
+          </div>
+          <div style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-muted);">
+            提示：搶答後需點選自己手牌中<br>能與題目拼成國字的部首卡！
+          </div>
+        </div>
+        
+        <!-- Player B -->
+        <div class="player-panel team-b" id="panel-team-b">
+          <div class="player-header">
+            <div class="player-avatar">🐻</div>
+            <div class="player-name" id="speed-team-b-name">黑熊隊</div>
+            <div class="player-score player-score-team-b" id="speed-score-b">0</div>
+          </div>
+          
+          <!-- 答題與手牌區 -->
+          <div class="player-hand-cards" id="hand-b"></div>
+          
+          <button class="buzz-btn buzz-btn-team-b" id="buzz-b" onclick="triggerBuzzer('B')">搶答<br>(按 L)</button>
+          
+          <!-- 造詞覆蓋層 -->
+          <div class="match-overlay" id="overlay-b" style="display: none;">
+            <h4>配對成功！請選擇正確造詞：</h4>
+            <div class="choice-grid"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. 雙人回合接力 (Turn Relay Game View) ==================== -->
+    <section id="view-game-relay" class="view-section">
+      <div class="game-status-bar">
+        <h3 id="relay-round-title">第 1 回合</h3>
+        <div class="game-timer">
+          <div class="timer-circle"></div>
+          <span>剩餘時間：</span>
+          <span id="relay-timer-val">30 秒</span>
+        </div>
+      </div>
+      
+      <div class="relay-layout">
+        <!-- 側邊欄計分板 -->
+        <div class="relay-sidebar">
+          <div class="relay-scoreboard">
+            <h3 style="margin-bottom: 1rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem;">對戰計分板</h3>
+            <div class="relay-player-row team-a-row" id="relay-row-a">
+              <span style="font-size: 1.2rem; font-weight:700;">🐯 <span id="relay-team-a-name">石虎隊</span></span>
+              <span class="player-score player-score-team-a" id="relay-score-a" style="font-size: 1.6rem;">0</span>
+            </div>
+            <div class="relay-player-row team-b-row" id="relay-row-b">
+              <span style="font-size: 1.2rem; font-weight:700;">🐻 <span id="relay-team-b-name">黑熊隊</span></span>
+              <span class="player-score player-score-team-b" id="relay-score-b" style="font-size: 1.6rem;">0</span>
+            </div>
+          </div>
+          
+          <!-- 已配對歷史紀錄 -->
+          <div class="relay-scoreboard" style="flex: 1; max-height: 300px; overflow-y: auto;">
+            <h3 style="margin-bottom: 1rem;">配對成功歷史：</h3>
+            <div class="match-history" id="relay-history">
+              <!-- 配對歷史 -->
+            </div>
+          </div>
+        </div>
+        
+        <!-- 遊戲配對看板 -->
+        <div class="relay-game-board">
+          <div class="panel-header">
+            <h3 id="relay-turn-indicator">輪到你了！請進行配對與造詞。</h3>
+          </div>
+          
+          <!-- 部首牌堆區 -->
+          <div>
+            <h4 class="board-section-title">📥 部首卡片堆 (Radicals)</h4>
+            <div class="deck-area" id="relay-radical-deck"></div>
+          </div>
+          
+          <!-- 中間配對插槽 -->
+          <div class="pair-slots">
+            <div class="game-card" id="slot-radical" style="pointer-events: none;"><span style="color:var(--text-muted);">部首</span></div>
+            <div class="slot-arrow">＋</div>
+            <div class="game-card" id="slot-component" style="pointer-events: none;"><span style="color:var(--text-muted);">部件</span></div>
+            <div class="slot-arrow">＝</div>
+            <div class="pair-result" id="slot-result">?</div>
+          </div>
+          
+          <!-- 部件牌堆區 -->
+          <div>
+            <h4 class="board-section-title">📥 偏旁部件卡片堆 (Components)</h4>
+            <div class="deck-area" id="relay-component-deck"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4.5 自學組字挑戰 (Self Learn Game View) ==================== -->
+    <section id="view-game-learn" class="view-section">
+      <div class="game-status-bar">
+        <h3 id="learn-round-title">第 1 / 10 題</h3>
+        <div class="learn-score-bar">
+          <span style="font-size: 1.1rem; font-weight: normal;">👤 挑戰者：<span id="learn-player-name" style="font-weight: bold; color: var(--color-primary);">學生</span></span>
+          <span style="margin-left: 1.5rem; font-size: 1.1rem;">💰 得分：<span id="learn-score-val" style="font-weight: bold; color: #2ec4b6;">0</span> 分</span>
+        </div>
+      </div>
+      
+      <div class="learn-layout">
+        <!-- 左側：目標看板與配對區 -->
+        <div class="learn-main-panel card-panel">
+          <div class="learn-instruction">🔍 請點選右側的「部首」與「部件」卡片，組合出底下的目標字：</div>
+          
+          <div class="learn-target-box">
+            <div class="learn-target-char" id="learn-target-char">?</div>
+            <div class="learn-target-hint">目標字</div>
+          </div>
+          
+          <!-- 配對插槽 -->
+          <div class="pair-slots learn-slots">
+            <div class="game-card learn-slot-card" id="learn-slot-radical"><span style="color:var(--text-muted);">部首</span></div>
+            <div class="slot-arrow">＋</div>
+            <div class="game-card learn-slot-card" id="learn-slot-component"><span style="color:var(--text-muted);">部件</span></div>
+          </div>
+          
+          <div style="margin-top: 1rem; display: flex; gap: 1rem; justify-content: center;">
+            <button class="btn btn-secondary" onclick="clearLearnSelection()" style="padding: 0.5rem 1rem; font-size: 0.9rem;">清除選擇 ✕</button>
+            <button class="btn btn-primary" onclick="verifyLearnSelection()" style="padding: 0.5rem 1.5rem; font-size: 0.9rem; background-color: #2ec4b6; border-color: #2ec4b6;">送出組合 🚀</button>
+          </div>
+        </div>
+        
+        <!-- 右側：部首與部件牌堆 -->
+        <div class="learn-decks-panel">
+          <div>
+            <h4 class="board-section-title">📥 選擇部首卡 (Radical)</h4>
+            <div class="deck-area learn-deck" id="learn-radical-deck"></div>
+          </div>
+          
+          <div style="margin-top: 1.5rem;">
+            <h4 class="board-section-title">📥 選擇部件卡 (Component)</h4>
+            <div class="deck-area learn-deck" id="learn-component-deck"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. 互動百格表 (Grid Table View) ==================== -->
+    <section id="view-grid" class="view-section">
+      <div class="card-panel">
+        <div class="panel-header">
+          <h2>部首部件百格表 (部首 + 部件 100-Grid)</h2>
+          <div style="display: flex; gap: 1rem; width: 300px;">
+            <input type="text" id="grid-search" class="search-input" placeholder="輸入漢字高亮它，如「根」" oninput="filterGrid()">
+            <button class="btn btn-secondary" onclick="document.getElementById('grid-search').value=''; filterGrid();">重設</button>
+          </div>
+        </div>
+        <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
+          這是桌遊附帶的快速查詢百格表。點擊表頭的部首或部件即可整行/整列高亮；點擊相交的國字，可彈出詳細的注音讀音與詞語喔！
+        </p>
+        
+        <div class="grid-wrapper">
+          <table class="grid-table" id="grid-table">
+            <!-- 由 JavaScript 動態生成百格表 -->
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. 部件字典與字卡 (Dictionary View) ==================== -->
+    <section id="view-dict" class="view-section">
+      <div class="card-panel">
+        <div class="panel-header">
+          <h2>百大熱搜部件字根庫 (編號 1-100)</h2>
+        </div>
+        
+        <!-- 搜尋與筆畫篩選區 -->
+        <div class="search-bar">
+          <input type="text" id="dict-search" class="search-input" placeholder="輸入部件（如：良）或常見字（如：跟）搜尋字根卡...">
+        </div>
+        
+        <div class="stroke-filter">
+          <span class="stroke-tab active" data-stroke="全部">全部</span>
+          <span class="stroke-tab" data-stroke="二">二畫</span>
+          <span class="stroke-tab" data-stroke="三">三畫</span>
+          <span class="stroke-tab" data-stroke="四">四畫</span>
+          <span class="stroke-tab" data-stroke="五">五畫</span>
+          <span class="stroke-tab" data-stroke="六">六畫</span>
+          <span class="stroke-tab" data-stroke="七">七畫</span>
+          <span class="stroke-tab" data-stroke="八">八畫</span>
+          <span class="stroke-tab" data-stroke="九">九畫</span>
+          <span class="stroke-tab" data-stroke="十">十畫</span>
+          <span class="stroke-tab" data-stroke="十一">十一畫</span>
+          <span class="stroke-tab" data-stroke="十三">十三畫</span>
+        </div>
+        
+        <!-- 部件字卡網格 -->
+        <div class="dict-cards-grid" id="dict-grid">
+          <!-- 由 JavaScript 動態渲染 100 張字根卡 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 7. 結算畫面 (Game Over View) ==================== -->
+    <section id="view-game-over" class="view-section">
+      <div class="game-over-box">
+        <h2 class="game-over-title">🎉 對戰結束！ 🎉</h2>
+        
+        <div class="winner-banner">
+          <div class="winner-avatar" id="winner-avatar">🏆</div>
+          <div class="winner-text" id="winner-text">恭喜！</div>
+        </div>
+        
+        <!-- 單人自學結算 -->
+        <div class="score-box" id="learn-final-summary" style="display: none; margin: 2rem auto; width: 100%; max-width: 400px; padding: 2rem; border-radius: 12px; border-top: 5px solid #2ec4b6; background: rgba(255,255,255,0.05); text-align: center; box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);">
+          <h3 id="learn-final-name" style="font-size: 1.4rem; color: var(--text-color); margin-bottom: 0.5rem;">學生 同學挑戰完成！</h3>
+          <p id="learn-final-score" style="font-size: 3.5rem; font-weight: bold; color: #2ec4b6; margin: 1rem 0;">80 / 100 分</p>
+          <p id="learn-final-evaluation" style="color: var(--text-muted); font-size: 1.1rem; font-style: italic;">加油打氣字句會出現在這</p>
+        </div>
+
+        <div class="score-summary" id="score-summary-double">
+          <div class="score-box" style="border-top: 5px solid var(--color-team-a);">
+            <h4 id="final-team-a-name">石虎隊</h4>
+            <p id="final-score-a" style="color: var(--color-team-a);">0</p>
+          </div>
+          <div class="score-box" style="border-top: 5px solid var(--color-team-b);">
+            <h4 id="final-team-b-name">黑熊隊</h4>
+            <p id="final-score-b" style="color: var(--color-team-b);">0</p>
+          </div>
+        </div>
+        
+        <div style="display: flex; gap: 1rem; justify-content: center;">
+          <button class="btn btn-secondary" onclick="backToLobby()">回首頁大廳</button>
+          <button class="btn btn-primary" onclick="startGame()">再次挑戰 🔄</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 自學挑戰回饋視窗 (Learn Feedback Modal) -->
+  <div class="modal-overlay" id="learn-feedback-modal" style="display: none;">
+    <div class="modal-content learn-feedback-content" style="max-width: 480px; text-align: center; border-radius: 20px; padding: 2.5rem; box-shadow: 0 10px 40px rgba(0,0,0,0.25);">
+      <div class="feedback-icon" id="learn-feedback-icon" style="font-size: 4rem; margin-bottom: 1rem; animation: bounce 1s infinite alternate;">🎉</div>
+      <h3 class="feedback-title" id="learn-feedback-title" style="font-size: 2rem; margin-bottom: 1rem; font-weight: 800;">答對了！</h3>
+      
+      <!-- 正確組字公式 -->
+      <div class="learn-feedback-formula" id="learn-feedback-formula" style="font-size: 1.3rem; margin: 1.5rem 0; padding: 0.8rem; background: rgba(0,0,0,0.05); border-radius: 10px; font-weight: 700; border-left: 5px solid #2ec4b6;">部首 + 部件 = 國字</div>
+      
+      <!-- 常用詞彙與造詞 -->
+      <div id="learn-feedback-words-section" style="margin-top: 1.5rem; text-align: left;">
+        <h4 class="modal-words-title" style="font-size: 1.1rem; font-weight: bold; border-left: 3px solid #2ec4b6; padding-left: 0.5rem; margin-bottom: 1rem;">常用詞彙與造詞：</h4>
+        <div class="modal-words-list" id="learn-feedback-words-list" style="max-height: 200px; overflow-y: auto;">
+          <!-- 詞彙及注音 -->
+        </div>
+      </div>
+      
+      <!-- 鼓勵字句 (答錯時顯示) -->
+      <div class="encouragement-text" id="learn-feedback-encouragement" style="display: none; font-size: 1.2rem; font-style: italic; color: #ff6b6b; margin: 1.5rem 0; font-weight: 600; padding: 1rem; border-radius: 10px; background: rgba(255,107,107,0.1); border-left: 5px solid #ff6b6b;"></div>
+      
+      <div style="margin-top: 2rem; display: flex; justify-content: center;">
+        <button class="btn btn-primary" id="learn-next-btn" onclick="nextLearnRound()" style="padding: 0.8rem 2.5rem; font-size: 1.1rem; border-radius: 30px; background-color: #2ec4b6; border-color: #2ec4b6; font-weight: bold; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(46, 196, 182, 0.4);">下一題 ➔</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 彈出視窗卡片 (Detail Modal) -->
+  <div class="modal-overlay" id="char-modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-char">字</div>
+      <div class="modal-bopomofo">注音</div>
+      <div class="modal-formula">部首 + 部件</div>
+      <h4 class="modal-words-title">常用詞彙與造詞：</h4>
+      <div class="modal-words-list">
+        <!-- 詞彙清單 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript 腳本引入 -->
+  <script src="data.js"></script>
+  <script src="dictionary.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>

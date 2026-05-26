@@ -1,0 +1,11 @@
+{
+  "name": "dong-wen-zi",
+  "version": "1.0.0",
+  "description": "動文字桌遊互動學習網頁",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx -y serve ."
+  },
+  "author": "Antigravity",
+  "license": "ISC"
+}
