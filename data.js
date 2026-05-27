@@ -19,121 +19,1069 @@ const RADICALS = [
 ];
 
 const COMPONENTS = [
-  // 1-16 補齊部件（2-4畫，邏輯與原書筆畫排序相符）
-  { id: 1, strokes: "二", component: "丁", common_chars: ["打", "叮", "盯", "釘", "訂", "汀"] },
-  { id: 2, strokes: "二", component: "卜", common_chars: ["朴", "外", "臥", "卦", "扑"] },
-  { id: 3, strokes: "二", component: "厂", common_chars: ["歷", "厲", "崖", "厄"] },
-  { id: 4, strokes: "二", component: "几", common_chars: ["帆", "汎", "肌", "釩", "朵"] },
-  { id: 5, strokes: "二", component: "又", common_chars: ["叉", "仅", "雙", "友", "度"] },
-  { id: 6, strokes: "三", component: "工", common_chars: ["江", "紅", "空", "缸", "扛", "釭"] },
-  { id: 7, strokes: "三", component: "口", common_chars: ["扣", "古", "右", "加", "占"] },
-  { id: 8, strokes: "三", component: "土", common_chars: ["吐", "杜", "肚", "徒", "陡"] },
-  { id: 9, strokes: "三", component: "子", common_chars: ["仔", "李", "季", "字", "孫", "吼"] },
-  { id: 10, strokes: "三", component: "己", common_chars: ["記", "紀", "杞", "叩", "屺", "芑"] },
-  { id: 11, strokes: "三", component: "寸", common_chars: ["村", "討", "忖", "守", "耐", "寺"] },
-  { id: 12, strokes: "三", component: "尤", common_chars: ["沈", "枕", "眈", "拋", "疣"] },
-  { id: 13, strokes: "三", component: "千", common_chars: ["仟", "扦", "阡", "汘", "銛"] },
-  { id: 14, strokes: "四", component: "屯", common_chars: ["沌", "純", "噸", "盹", "頓"] },
-  { id: 15, strokes: "四", component: "支", common_chars: ["枝", "技", "吱", "肢", "翅"] },
-  { id: 16, strokes: "四", component: "戈", common_chars: ["找", "划", "伐", "戲", "戰"] },
-
-  // 17-100 原書圖片部件 (Page 207, 208, 209)
-  { id: 17, strokes: "四", component: "少", common_chars: ["妙", "眇", "秒", "渺"] },
-  { id: 18, strokes: "四", component: "巴", common_chars: ["把", "吧", "肥", "邑"] },
-  { id: 19, strokes: "四", component: "方", common_chars: ["芳", "坊", "紡", "訪", "放"] },
-  { id: 20, strokes: "四", component: "牙", common_chars: ["芽", "邪", "訝", "呀"] },
-  { id: 21, strokes: "四", component: "卂", common_chars: ["訊", "迅", "汛"] },
-  { id: 22, strokes: "四", component: "五", common_chars: ["吾", "語", "伍", "捂"] },
-  { id: 23, strokes: "四", component: "及", common_chars: ["吸", "級", "汲", "笈"] },
-  { id: 24, strokes: "四", component: "殳", common_chars: ["投", "段", "股", "般", "役", "毅"] },
-  { id: 25, strokes: "四", component: "开", common_chars: ["開", "研", "妍", "形", "型"] },
-  { id: 26, strokes: "四", component: "不", common_chars: ["否", "丕", "胚", "坏"] },
-  { id: 27, strokes: "四", component: "巨", common_chars: ["拒", "距", "鉅", "矩"] },
-  { id: 28, strokes: "四", component: "王", common_chars: ["丟", "全", "框"] },
-  { id: 29, strokes: "四", component: "文", common_chars: ["紋", "雯", "蚊", "產"] },
-  { id: 30, strokes: "四", component: "爪", common_chars: ["抓", "爬", "爭", "覓"] },
-  { id: 31, strokes: "四", component: "犬", common_chars: ["伏", "犯", "狠", "狂"] },
-  { id: 32, strokes: "四", component: "片", common_chars: ["牌", "蕭", "版", "牒"] },
-  { id: 33, strokes: "四", component: "市", common_chars: ["柿", "鬧"] },
-  { id: 34, strokes: "五", component: "且", common_chars: ["沮", "組", "祖", "阻", "狙", "宜", "助"] },
-  { id: 35, strokes: "五", component: "乍", common_chars: ["詐", "作", "怎", "炸", "昨"] },
-  { id: 36, strokes: "五", component: "半", common_chars: ["伴", "拌", "絆", "判"] },
-  { id: 37, strokes: "五", component: "可", common_chars: ["何", "河", "倚", "椅", "寄"] },
-  { id: 38, strokes: "五", component: "皮", common_chars: ["彼", "披", "波", "坡", "破"] },
-  { id: 39, strokes: "五", component: "夗", common_chars: ["苑", "怨", "碗", "婉"] },
-  { id: 40, strokes: "五", component: "㐱", common_chars: ["珍", "診", "參", "滲"] },
-  { id: 41, strokes: "五", component: "冉", common_chars: ["再", "稱", "溝"] },
-  { id: 42, strokes: "五", component: "史", common_chars: ["使", "吏", "駛"] },
-  { id: 43, strokes: "五", component: "戊", common_chars: ["成", "城", "誠", "盛", "喊", "戚"] },
-  { id: 44, strokes: "五", component: "矛", common_chars: ["茅", "柔", "務", "橘", "霧"] },
-  { id: 45, strokes: "五", component: "矢", common_chars: ["短", "候", "知", "智", "族"] },
-  { id: 46, strokes: "五", component: "永", common_chars: ["泳", "詠", "樣"] },
-  { id: 47, strokes: "六", component: "亥", common_chars: ["孩", "該", "刻", "核"] },
-  { id: 48, strokes: "六", component: "兆", common_chars: ["跳", "桃", "逃", "挑"] },
-  { id: 49, strokes: "六", component: "各", common_chars: ["客", "路", "洛", "落", "露"] },
-  { id: 50, strokes: "六", component: "同", common_chars: ["洞", "桐", "銅", "筒"] },
-  { id: 51, strokes: "六", component: "寺", common_chars: ["特", "侍", "待", "時"] },
-  { id: 52, strokes: "六", component: "聿", common_chars: ["津", "建", "律", "肆", "筆"] },
-  { id: 53, strokes: "六", component: "艮", common_chars: ["很", "恨", "狠", "眼"] },
-  { id: 54, strokes: "六", component: "束", common_chars: ["策", "棘", "棗"] },
-  { id: 55, strokes: "六", component: "曲", common_chars: ["曹", "槽", "農", "濃"] },
-  { id: 56, strokes: "六", component: "羊", common_chars: ["洋", "佯", "詳", "祥", "善"] },
-  { id: 57, strokes: "六", component: "缶", common_chars: ["搖", "缺", "缸", "罐"] },
-  { id: 58, strokes: "六", component: "羽", common_chars: ["翔", "翁", "習", "翠"] },
-  { id: 59, strokes: "六", component: "舟", common_chars: ["般", "船", "航", "舵"] },
-  { id: 60, strokes: "七", component: "每", common_chars: ["梅", "海", "侮", "繁", "悔", "誨"] },
-  { id: 61, strokes: "七", component: "甬", common_chars: ["勇", "湧", "通", "痛", "桶"] },
-  { id: 62, strokes: "七", component: "肖", common_chars: ["消", "俏", "削", "趙", "屑"] },
-  { id: 63, strokes: "七", component: "良", common_chars: ["郎", "朗", "浪", "狼", "娘"] },
-  { id: 64, strokes: "七", component: "我", common_chars: ["俄", "義", "儀", "餓"] },
-  { id: 65, strokes: "七", component: "巠", common_chars: ["輕", "勁", "徑", "逕"] },
-  { id: 66, strokes: "七", component: "夆", common_chars: ["峰", "鋒", "蜂", "烽", "逢", "縫"] },
-  { id: 67, strokes: "七", component: "豆", common_chars: ["豈", "豎", "豐", "登", "澄"] },
-  { id: 68, strokes: "七", component: "谷", common_chars: ["俗", "裕", "欲", "容", "溶"] },
-  { id: 69, strokes: "七", component: "辛", common_chars: ["僻", "宰", "辜", "辭"] },
-  { id: 70, strokes: "七", component: "辰", common_chars: ["晨", "振", "農", "濃", "唇", "辱"] },
-  { id: 71, strokes: "七", component: "采", common_chars: ["翻", "悉", "審", "奧"] },
-  { id: 72, strokes: "八", component: "侖", common_chars: ["倫", "輪", "淪", "論"] },
-  { id: 73, strokes: "八", component: "宗", common_chars: ["崇", "棕", "綜", "粽"] },
-  { id: 74, strokes: "八", component: "或", common_chars: ["國", "域", "惑"] },
-  { id: 75, strokes: "八", component: "果", common_chars: ["顆", "棵", "巢", "夥"] },
-  { id: 76, strokes: "八", component: "者", common_chars: ["緒", "著", "煮", "署", "暑", "都"] },
-  { id: 77, strokes: "八", component: "青", common_chars: ["靜", "靖", "清", "情", "晴"] },
-  { id: 78, strokes: "八", component: "音", common_chars: ["陪", "倍", "賠", "焙", "剖"] },
-  { id: 79, strokes: "八", component: "非", common_chars: ["斐", "匪", "菲", "緋", "悲"] },
-  { id: 80, strokes: "八", component: "東", common_chars: ["東", "棟", "凍", "陳"] },
-  { id: 81, strokes: "九", component: "易", common_chars: ["傷", "湯", "陽", "楊", "濕"] },
-  { id: 82, strokes: "九", component: "唐", common_chars: ["唐", "糖", "塘", "溏"] },
-  { id: 83, strokes: "九", component: "軍", common_chars: ["軍", "輝", "暈", "揮"] },
-  { id: 84, strokes: "九", component: "重", common_chars: ["重", "種", "鍾", "動"] },
-  { id: 85, strokes: "九", component: "革", common_chars: ["鞋", "勒", "霸", "靴"] },
-  { id: 86, strokes: "九", component: "奐", common_chars: ["喚", "換", "煥", "渙"] },
-  { id: 87, strokes: "九", component: "韋", common_chars: ["偉", "圍", "韌", "緯", "葦"] },
-  { id: 88, strokes: "九", component: "風", common_chars: ["嵐", "飄", "颯", "颱", "颮"] },
-  { id: 89, strokes: "九", component: "禺", common_chars: ["偶", "遇", "厲", "勵", "邁"] },
-  { id: 90, strokes: "十", component: "專", common_chars: ["傳", "縛", "博", "簿"] },
-  { id: 91, strokes: "十", component: "舀", common_chars: ["掐", "焰", "滔", "諂"] },
-  { id: 92, strokes: "十", component: "爻", common_chars: ["搖", "遙", "謠", "瑤"] },
-  { id: 93, strokes: "十", component: "芻", common_chars: ["趨", "鄒", "皺", "雛"] },
-  { id: 94, strokes: "十", component: "馬", common_chars: ["碼", "馮", "驚", "闖", "罵"] },
-  { id: 95, strokes: "十", component: "骨", common_chars: ["滑", "猾", "骯", "骼"] },
-  { id: 96, strokes: "十", component: "鬼", common_chars: ["塊", "愧", "蒐", "魂", "魁"] },
-  { id: 97, strokes: "十一", component: "商", common_chars: ["摘", "適", "敵", "嫡"] },
-  { id: 98, strokes: "十一", component: "麻", common_chars: ["麼", "摩", "魔", "靡"] },
-  { id: 99, strokes: "十三", component: "僉", common_chars: ["臉", "險", "檢", "驗", "儉", "撿", "簽", "劍"] },
-  { id: 100, strokes: "十三", component: "會", common_chars: ["會", "繪", "燴", "檜", "儈"] }
+  {
+    "id": 1,
+    "strokes": "二",
+    "component": "丁",
+    "common_chars": [
+      "仃",
+      "可",
+      "打",
+      "汀",
+      "玎",
+      "訂",
+      "釘"
+    ]
+  },
+  {
+    "id": 2,
+    "strokes": "二",
+    "component": "卜",
+    "common_chars": [
+      "仆",
+      "扑",
+      "朴",
+      "訃"
+    ]
+  },
+  {
+    "id": 3,
+    "strokes": "二",
+    "component": "厂",
+    "common_chars": [
+      "仄"
+    ]
+  },
+  {
+    "id": 4,
+    "strokes": "二",
+    "component": "几",
+    "common_chars": [
+      "仉",
+      "朵",
+      "肌"
+    ]
+  },
+  {
+    "id": 5,
+    "strokes": "二",
+    "component": "又",
+    "common_chars": [
+      "叹"
+    ]
+  },
+  {
+    "id": 6,
+    "strokes": "三",
+    "component": "工",
+    "common_chars": [
+      "扛",
+      "杠",
+      "江",
+      "紅",
+      "肛",
+      "訌"
+    ]
+  },
+  {
+    "id": 7,
+    "strokes": "三",
+    "component": "口",
+    "common_chars": [
+      "扣",
+      "束",
+      "釦"
+    ]
+  },
+  {
+    "id": 8,
+    "strokes": "三",
+    "component": "土",
+    "common_chars": [
+      "吐",
+      "圭",
+      "杜",
+      "肚",
+      "芏"
+    ]
+  },
+  {
+    "id": 9,
+    "strokes": "三",
+    "component": "子",
+    "common_chars": [
+      "仔",
+      "李"
+    ]
+  },
+  {
+    "id": 10,
+    "strokes": "三",
+    "component": "己",
+    "common_chars": [
+      "圮",
+      "忌",
+      "杞",
+      "紀",
+      "芑",
+      "記"
+    ]
+  },
+  {
+    "id": 11,
+    "strokes": "三",
+    "component": "寸",
+    "common_chars": [
+      "付",
+      "吋",
+      "忖",
+      "村",
+      "紂",
+      "肘",
+      "討"
+    ]
+  },
+  {
+    "id": 12,
+    "strokes": "三",
+    "component": "尤",
+    "common_chars": []
+  },
+  {
+    "id": 13,
+    "strokes": "三",
+    "component": "千",
+    "common_chars": [
+      "仟",
+      "扦",
+      "芊"
+    ]
+  },
+  {
+    "id": 14,
+    "strokes": "四",
+    "component": "屯",
+    "common_chars": [
+      "沌",
+      "純",
+      "肫",
+      "鈍"
+    ]
+  },
+  {
+    "id": 15,
+    "strokes": "四",
+    "component": "支",
+    "common_chars": [
+      "伎",
+      "吱",
+      "忮",
+      "技",
+      "枝",
+      "肢",
+      "芰",
+      "跂"
+    ]
+  },
+  {
+    "id": 16,
+    "strokes": "四",
+    "component": "戈",
+    "common_chars": [
+      "伐",
+      "找",
+      "栽"
+    ]
+  },
+  {
+    "id": 17,
+    "strokes": "四",
+    "component": "少",
+    "common_chars": [
+      "吵",
+      "抄",
+      "杪",
+      "沙",
+      "紗",
+      "鈔"
+    ]
+  },
+  {
+    "id": 18,
+    "strokes": "四",
+    "component": "巴",
+    "common_chars": [
+      "吧",
+      "把",
+      "杷",
+      "肥",
+      "芭",
+      "鈀"
+    ]
+  },
+  {
+    "id": 19,
+    "strokes": "四",
+    "component": "方",
+    "common_chars": [
+      "仿",
+      "坊",
+      "枋",
+      "紡",
+      "肪",
+      "芳",
+      "訪"
+    ]
+  },
+  {
+    "id": 20,
+    "strokes": "四",
+    "component": "牙",
+    "common_chars": [
+      "呀",
+      "枒",
+      "芽",
+      "訝"
+    ]
+  },
+  {
+    "id": 21,
+    "strokes": "四",
+    "component": "卂",
+    "common_chars": [
+      "汛",
+      "訊"
+    ]
+  },
+  {
+    "id": 22,
+    "strokes": "四",
+    "component": "五",
+    "common_chars": [
+      "伍",
+      "吾"
+    ]
+  },
+  {
+    "id": 23,
+    "strokes": "四",
+    "component": "及",
+    "common_chars": [
+      "吸",
+      "圾",
+      "汲",
+      "級",
+      "芨",
+      "趿"
+    ]
+  },
+  {
+    "id": 24,
+    "strokes": "四",
+    "component": "殳",
+    "common_chars": [
+      "投",
+      "股",
+      "芟",
+      "設"
+    ]
+  },
+  {
+    "id": 25,
+    "strokes": "四",
+    "component": "开",
+    "common_chars": [
+      "汧",
+      "趼"
+    ]
+  },
+  {
+    "id": 26,
+    "strokes": "四",
+    "component": "不",
+    "common_chars": [
+      "否",
+      "杯"
+    ]
+  },
+  {
+    "id": 27,
+    "strokes": "四",
+    "component": "巨",
+    "common_chars": [
+      "拒",
+      "苣",
+      "距",
+      "鉅"
+    ]
+  },
+  {
+    "id": 28,
+    "strokes": "四",
+    "component": "王",
+    "common_chars": [
+      "呈",
+      "枉",
+      "汪",
+      "玨"
+    ]
+  },
+  {
+    "id": 29,
+    "strokes": "四",
+    "component": "文",
+    "common_chars": [
+      "吝",
+      "忞",
+      "汶",
+      "玟",
+      "紋"
+    ]
+  },
+  {
+    "id": 30,
+    "strokes": "四",
+    "component": "爪",
+    "common_chars": [
+      "抓"
+    ]
+  },
+  {
+    "id": 31,
+    "strokes": "四",
+    "component": "犬",
+    "common_chars": [
+      "伏",
+      "吠"
+    ]
+  },
+  {
+    "id": 32,
+    "strokes": "四",
+    "component": "片",
+    "common_chars": []
+  },
+  {
+    "id": 33,
+    "strokes": "四",
+    "component": "市",
+    "common_chars": [
+      "柿"
+    ]
+  },
+  {
+    "id": 34,
+    "strokes": "五",
+    "component": "且",
+    "common_chars": [
+      "咀",
+      "沮",
+      "組",
+      "苴",
+      "詛"
+    ]
+  },
+  {
+    "id": 35,
+    "strokes": "五",
+    "component": "乍",
+    "common_chars": [
+      "作",
+      "咋",
+      "怎",
+      "柞",
+      "胙",
+      "苲",
+      "詐"
+    ]
+  },
+  {
+    "id": 36,
+    "strokes": "五",
+    "component": "半",
+    "common_chars": [
+      "伴",
+      "拌",
+      "泮",
+      "絆",
+      "胖"
+    ]
+  },
+  {
+    "id": 37,
+    "strokes": "五",
+    "component": "可",
+    "common_chars": [
+      "何",
+      "呵",
+      "坷",
+      "柯",
+      "河",
+      "珂",
+      "苛",
+      "訶"
+    ]
+  },
+  {
+    "id": 38,
+    "strokes": "五",
+    "component": "皮",
+    "common_chars": [
+      "坡",
+      "披",
+      "波",
+      "玻",
+      "跛"
+    ]
+  },
+  {
+    "id": 39,
+    "strokes": "五",
+    "component": "夗",
+    "common_chars": [
+      "怨",
+      "苑"
+    ]
+  },
+  {
+    "id": 40,
+    "strokes": "五",
+    "component": "㐱",
+    "common_chars": [
+      "胗",
+      "診"
+    ]
+  },
+  {
+    "id": 41,
+    "strokes": "五",
+    "component": "冉",
+    "common_chars": [
+      "苒"
+    ]
+  },
+  {
+    "id": 42,
+    "strokes": "五",
+    "component": "史",
+    "common_chars": []
+  },
+  {
+    "id": 43,
+    "strokes": "五",
+    "component": "戊",
+    "common_chars": [
+      "茂"
+    ]
+  },
+  {
+    "id": 44,
+    "strokes": "五",
+    "component": "矛",
+    "common_chars": [
+      "柔",
+      "茅"
+    ]
+  },
+  {
+    "id": 45,
+    "strokes": "五",
+    "component": "矢",
+    "common_chars": []
+  },
+  {
+    "id": 46,
+    "strokes": "五",
+    "component": "永",
+    "common_chars": [
+      "泳",
+      "脈",
+      "詠"
+    ]
+  },
+  {
+    "id": 47,
+    "strokes": "六",
+    "component": "亥",
+    "common_chars": [
+      "咳",
+      "垓",
+      "核",
+      "該"
+    ]
+  },
+  {
+    "id": 48,
+    "strokes": "六",
+    "component": "兆",
+    "common_chars": [
+      "佻",
+      "挑",
+      "桃",
+      "洮",
+      "珧",
+      "跳",
+      "銚"
+    ]
+  },
+  {
+    "id": 49,
+    "strokes": "六",
+    "component": "各",
+    "common_chars": [
+      "咯",
+      "恪",
+      "格",
+      "洛",
+      "珞",
+      "絡",
+      "胳",
+      "路",
+      "鉻"
+    ]
+  },
+  {
+    "id": 50,
+    "strokes": "六",
+    "component": "同",
+    "common_chars": [
+      "侗",
+      "垌",
+      "恫",
+      "桐",
+      "洞",
+      "胴",
+      "茼",
+      "銅"
+    ]
+  },
+  {
+    "id": 51,
+    "strokes": "六",
+    "component": "寺",
+    "common_chars": [
+      "侍",
+      "恃",
+      "持",
+      "詩"
+    ]
+  },
+  {
+    "id": 52,
+    "strokes": "六",
+    "component": "聿",
+    "common_chars": [
+      "津"
+    ]
+  },
+  {
+    "id": 53,
+    "strokes": "六",
+    "component": "艮",
+    "common_chars": [
+      "哏",
+      "垠",
+      "恨",
+      "根",
+      "茛",
+      "跟",
+      "銀"
+    ]
+  },
+  {
+    "id": 54,
+    "strokes": "六",
+    "component": "束",
+    "common_chars": [
+      "悚",
+      "涑"
+    ]
+  },
+  {
+    "id": 55,
+    "strokes": "六",
+    "component": "曲",
+    "common_chars": []
+  },
+  {
+    "id": 56,
+    "strokes": "六",
+    "component": "羊",
+    "common_chars": [
+      "佯",
+      "咩",
+      "恙",
+      "洋",
+      "詳"
+    ]
+  },
+  {
+    "id": 57,
+    "strokes": "六",
+    "component": "缶",
+    "common_chars": []
+  },
+  {
+    "id": 58,
+    "strokes": "六",
+    "component": "羽",
+    "common_chars": [
+      "栩",
+      "詡"
+    ]
+  },
+  {
+    "id": 59,
+    "strokes": "六",
+    "component": "舟",
+    "common_chars": []
+  },
+  {
+    "id": 60,
+    "strokes": "七",
+    "component": "每",
+    "common_chars": [
+      "侮",
+      "悔",
+      "梅",
+      "海",
+      "脢",
+      "莓",
+      "誨"
+    ]
+  },
+  {
+    "id": 61,
+    "strokes": "七",
+    "component": "甬",
+    "common_chars": [
+      "俑",
+      "恿",
+      "捅",
+      "桶",
+      "涌",
+      "誦",
+      "踊"
+    ]
+  },
+  {
+    "id": 62,
+    "strokes": "七",
+    "component": "肖",
+    "common_chars": [
+      "俏",
+      "哨",
+      "悄",
+      "捎",
+      "梢",
+      "消",
+      "誚",
+      "銷"
+    ]
+  },
+  {
+    "id": 63,
+    "strokes": "七",
+    "component": "良",
+    "common_chars": [
+      "朗",
+      "浪",
+      "琅",
+      "莨",
+      "踉",
+      "鋃"
+    ]
+  },
+  {
+    "id": 64,
+    "strokes": "七",
+    "component": "我",
+    "common_chars": [
+      "俄",
+      "哦",
+      "莪"
+    ]
+  },
+  {
+    "id": 65,
+    "strokes": "七",
+    "component": "巠",
+    "common_chars": [
+      "涇",
+      "經",
+      "脛",
+      "莖",
+      "誙"
+    ]
+  },
+  {
+    "id": 66,
+    "strokes": "七",
+    "component": "夆",
+    "common_chars": [
+      "鋒"
+    ]
+  },
+  {
+    "id": 67,
+    "strokes": "七",
+    "component": "豆",
+    "common_chars": []
+  },
+  {
+    "id": 68,
+    "strokes": "七",
+    "component": "谷",
+    "common_chars": [
+      "俗",
+      "浴"
+    ]
+  },
+  {
+    "id": 69,
+    "strokes": "七",
+    "component": "辛",
+    "common_chars": [
+      "梓",
+      "莘",
+      "鋅"
+    ]
+  },
+  {
+    "id": 70,
+    "strokes": "七",
+    "component": "辰",
+    "common_chars": [
+      "振",
+      "脣"
+    ]
+  },
+  {
+    "id": 71,
+    "strokes": "七",
+    "component": "采",
+    "common_chars": [
+      "採",
+      "綵",
+      "菜",
+      "踩"
+    ]
+  },
+  {
+    "id": 72,
+    "strokes": "八",
+    "component": "侖",
+    "common_chars": [
+      "倫",
+      "掄",
+      "淪",
+      "綸",
+      "論"
+    ]
+  },
+  {
+    "id": 73,
+    "strokes": "八",
+    "component": "宗",
+    "common_chars": [
+      "棕",
+      "淙",
+      "琮",
+      "綜"
+    ]
+  },
+  {
+    "id": 74,
+    "strokes": "八",
+    "component": "或",
+    "common_chars": [
+      "域",
+      "惑"
+    ]
+  },
+  {
+    "id": 75,
+    "strokes": "八",
+    "component": "果",
+    "common_chars": [
+      "倮",
+      "棵",
+      "課",
+      "踝"
+    ]
+  },
+  {
+    "id": 76,
+    "strokes": "八",
+    "component": "者",
+    "common_chars": [
+      "堵",
+      "楮",
+      "渚",
+      "緒",
+      "著",
+      "諸"
+    ]
+  },
+  {
+    "id": 77,
+    "strokes": "八",
+    "component": "青",
+    "common_chars": [
+      "倩",
+      "情",
+      "清",
+      "菁",
+      "請"
+    ]
+  },
+  {
+    "id": 78,
+    "strokes": "八",
+    "component": "音",
+    "common_chars": [
+      "喑",
+      "意",
+      "揞",
+      "諳"
+    ]
+  },
+  {
+    "id": 79,
+    "strokes": "八",
+    "component": "非",
+    "common_chars": [
+      "俳",
+      "啡",
+      "悲",
+      "排",
+      "緋",
+      "腓",
+      "菲",
+      "誹"
+    ]
+  },
+  {
+    "id": 80,
+    "strokes": "八",
+    "component": "東",
+    "common_chars": [
+      "棟"
+    ]
+  },
+  {
+    "id": 81,
+    "strokes": "九",
+    "component": "易",
+    "common_chars": [
+      "埸",
+      "惕",
+      "踢",
+      "錫"
+    ]
+  },
+  {
+    "id": 82,
+    "strokes": "九",
+    "component": "唐",
+    "common_chars": [
+      "塘",
+      "搪",
+      "溏"
+    ]
+  },
+  {
+    "id": 83,
+    "strokes": "九",
+    "component": "軍",
+    "common_chars": [
+      "揮",
+      "渾",
+      "葷",
+      "諢"
+    ]
+  },
+  {
+    "id": 84,
+    "strokes": "九",
+    "component": "重",
+    "common_chars": [
+      "腫",
+      "董",
+      "踵",
+      "鍾"
+    ]
+  },
+  {
+    "id": 85,
+    "strokes": "九",
+    "component": "革",
+    "common_chars": []
+  },
+  {
+    "id": 86,
+    "strokes": "九",
+    "component": "奐",
+    "common_chars": [
+      "喚",
+      "換",
+      "渙"
+    ]
+  },
+  {
+    "id": 87,
+    "strokes": "九",
+    "component": "韋",
+    "common_chars": [
+      "偉",
+      "瑋",
+      "緯",
+      "葦",
+      "諱"
+    ]
+  },
+  {
+    "id": 88,
+    "strokes": "九",
+    "component": "風",
+    "common_chars": [
+      "楓",
+      "諷"
+    ]
+  },
+  {
+    "id": 89,
+    "strokes": "九",
+    "component": "禺",
+    "common_chars": [
+      "偶",
+      "喁",
+      "愚",
+      "萬"
+    ]
+  },
+  {
+    "id": 90,
+    "strokes": "十",
+    "component": "專",
+    "common_chars": [
+      "傳",
+      "摶",
+      "蓴"
+    ]
+  },
+  {
+    "id": 91,
+    "strokes": "十",
+    "component": "舀",
+    "common_chars": [
+      "滔",
+      "蹈"
+    ]
+  },
+  {
+    "id": 92,
+    "strokes": "十",
+    "component": "爻",
+    "common_chars": []
+  },
+  {
+    "id": 93,
+    "strokes": "十",
+    "component": "芻",
+    "common_chars": [
+      "謅"
+    ]
+  },
+  {
+    "id": 94,
+    "strokes": "十",
+    "component": "馬",
+    "common_chars": [
+      "嗎",
+      "瑪"
+    ]
+  },
+  {
+    "id": 95,
+    "strokes": "十",
+    "component": "骨",
+    "common_chars": [
+      "滑"
+    ]
+  },
+  {
+    "id": 96,
+    "strokes": "十",
+    "component": "鬼",
+    "common_chars": [
+      "傀",
+      "塊",
+      "愧",
+      "槐",
+      "瑰",
+      "蒐"
+    ]
+  },
+  {
+    "id": 97,
+    "strokes": "十一",
+    "component": "商",
+    "common_chars": []
+  },
+  {
+    "id": 98,
+    "strokes": "十一",
+    "component": "麻",
+    "common_chars": [
+      "嘛",
+      "摩",
+      "縻"
+    ]
+  },
+  {
+    "id": 99,
+    "strokes": "十三",
+    "component": "僉",
+    "common_chars": [
+      "儉",
+      "撿",
+      "檢",
+      "臉"
+    ]
+  },
+  {
+    "id": 100,
+    "strokes": "十三",
+    "component": "會",
+    "common_chars": [
+      "儈",
+      "噲",
+      "檜",
+      "繪",
+      "膾",
+      "薈"
+    ]
+  }
 ];
 
 // 組字百格表資料庫 (20個核心部件 x 14個部首) + 補齊部件的組字關係
 const COMBINATIONS = {
   "丁": {
-    "口": {
-      "char": "叮",
+    "人": {
+      "char": "仃",
       "bopomofo": "ㄉㄧㄥ",
       "words": [
-        "叮嚀",
-        "叮咬",
-        "叮囑"
+        "伶仃"
+      ]
+    },
+    "口": {
+      "char": "可",
+      "bopomofo": "ㄎㄜˇ",
+      "words": [
+        "許可",
+        "可貴",
+        "可敬"
       ]
     },
     "扌": {
@@ -143,31 +1091,6 @@ const COMBINATIONS = {
         "打球",
         "打掃",
         "打架"
-      ]
-    },
-    "釒": {
-      "char": "釘",
-      "bopomofo": "ㄉㄧㄥ",
-      "words": [
-        "釘子",
-        "鐵釘",
-        "螺絲釘"
-      ]
-    },
-    "言": {
-      "char": "訂",
-      "bopomofo": "ㄉㄧㄥˋ",
-      "words": [
-        "訂購",
-        "訂單",
-        "訂正"
-      ]
-    },
-    "人": {
-      "char": "仃",
-      "bopomofo": "ㄉㄧㄥ",
-      "words": [
-        "伶仃"
       ]
     },
     "氵": {
@@ -184,17 +1107,38 @@ const COMBINATIONS = {
         "玎璫",
         "玲玎"
       ]
+    },
+    "言": {
+      "char": "訂",
+      "bopomofo": "ㄉㄧㄥˋ",
+      "words": [
+        "訂購",
+        "訂單",
+        "訂正"
+      ]
+    },
+    "釒": {
+      "char": "釘",
+      "bopomofo": "ㄉㄧㄥ",
+      "words": [
+        "釘子",
+        "鐵釘",
+        "螺絲釘"
+      ]
+    }
+  },
+  "厂": {
+    "人": {
+      "char": "仄",
+      "bopomofo": "ㄗㄜˋ",
+      "words": [
+        "狹仄",
+        "仄路",
+        "仄聲"
+      ]
     }
   },
   "卜": {
-    "木": {
-      "char": "朴",
-      "bopomofo": "ㄆㄨˊ",
-      "words": [
-        "朴子",
-        "朴素"
-      ]
-    },
     "人": {
       "char": "仆",
       "bopomofo": "ㄆㄨ",
@@ -209,1443 +1153,19 @@ const COMBINATIONS = {
         "鞭扑"
       ]
     },
+    "木": {
+      "char": "朴",
+      "bopomofo": "ㄆㄛˋ",
+      "words": [
+        "朴子",
+        "朴素"
+      ]
+    },
     "言": {
       "char": "訃",
       "bopomofo": "ㄈㄨˋ",
       "words": [
         "訃告"
-      ]
-    }
-  },
-  "又": {
-    "口": {
-      "char": "叹",
-      "bopomofo": "ㄊㄢˋ",
-      "words": [
-        "嘆氣",
-        "嘆息"
-      ]
-    },
-    "肉": {
-      "char": "服",
-      "bopomofo": "ㄈㄨˊ",
-      "words": [
-        "制服",
-        "禮服",
-        "便服"
-      ]
-    }
-  },
-  "工": {
-    "氵": {
-      "char": "江",
-      "bopomofo": "ㄐㄧㄤ",
-      "words": [
-        "長江",
-        "江河",
-        "江湖"
-      ]
-    },
-    "扌": {
-      "char": "扛",
-      "bopomofo": "ㄎㄤˊ",
-      "words": [
-        "扛行李",
-        "扛重物"
-      ]
-    },
-    "糸": {
-      "char": "紅",
-      "bopomofo": "ㄏㄨㄥˊ",
-      "words": [
-        "紅色",
-        "紅花",
-        "紅包"
-      ]
-    },
-    "木": {
-      "char": "杠",
-      "bopomofo": "ㄍㄤ",
-      "words": [
-        "杠色"
-      ]
-    },
-    "肉": {
-      "char": "肛",
-      "bopomofo": "ㄍㄤ",
-      "words": [
-        "肛門"
-      ]
-    },
-    "言": {
-      "char": "訌",
-      "bopomofo": "ㄏㄨㄥˊ",
-      "words": [
-        "內訌"
-      ]
-    }
-  },
-  "子": {
-    "人": {
-      "char": "仔",
-      "bopomofo": "ㄗˇ",
-      "words": [
-        "仔細",
-        "牛仔褲"
-      ]
-    },
-    "口": {
-      "char": "吼",
-      "bopomofo": "ㄏㄡˇ",
-      "words": [
-        "大吼",
-        "吼叫",
-        "怒吼"
-      ]
-    },
-    "木": {
-      "char": "李",
-      "bopomofo": "ㄌㄧˇ",
-      "words": [
-        "李子",
-        "行李",
-        "桃李"
-      ]
-    }
-  },
-  "己": {
-    "糸": {
-      "char": "紀",
-      "bopomofo": "ㄐㄧˇ",
-      "words": [
-        "紀錄",
-        "紀念",
-        "世紀"
-      ]
-    },
-    "言": {
-      "char": "記",
-      "bopomofo": "ㄐㄧˋ",
-      "words": [
-        "日記",
-        "記者",
-        "忘記"
-      ]
-    },
-    "木": {
-      "char": "杞",
-      "bopomofo": "ㄑㄧˇ",
-      "words": [
-        "杞人憂天",
-        "枸杞"
-      ]
-    },
-    "口": {
-      "char": "叩",
-      "bopomofo": "ㄎㄡˋ",
-      "words": [
-        "叩頭",
-        "叩門",
-        "叩首"
-      ]
-    },
-    "忄": {
-      "char": "忌",
-      "bopomofo": "ㄐㄧˋ",
-      "words": [
-        "妒忌",
-        "猜忌",
-        "顧忌"
-      ]
-    },
-    "艹": {
-      "char": "芑",
-      "bopomofo": "ㄑㄧˇ",
-      "words": [
-        "采芑"
-      ]
-    }
-  },
-  "寸": {
-    "木": {
-      "char": "村",
-      "bopomofo": "ㄘㄨㄣ",
-      "words": [
-        "農村",
-        "村莊",
-        "村民"
-      ]
-    },
-    "言": {
-      "char": "討",
-      "bopomofo": "ㄊㄠˇ",
-      "words": [
-        "討論",
-        "討厭",
-        "討好"
-      ]
-    },
-    "忄": {
-      "char": "忖",
-      "bopomofo": "ㄘㄨㄣˇ",
-      "words": [
-        "忖度",
-        "思忖"
-      ]
-    },
-    "土": {
-      "char": "寺",
-      "bopomofo": "ㄙˋ",
-      "words": [
-        "寺廟",
-        "山寺",
-        "寺院"
-      ]
-    },
-    "人": {
-      "char": "付",
-      "bopomofo": "ㄈㄨˋ",
-      "words": [
-        "交付",
-        "託付",
-        "付款"
-      ]
-    },
-    "糸": {
-      "char": "紂",
-      "bopomofo": "ㄓㄡˋ",
-      "words": [
-        "紂色"
-      ]
-    },
-    "肉": {
-      "char": "肘",
-      "bopomofo": "ㄓㄡˇ",
-      "words": [
-        "臂肘",
-        "肘兒",
-        "胳臂肘"
-      ]
-    }
-  },
-  "尤": {
-    "氵": {
-      "char": "沈",
-      "bopomofo": "ㄕㄣˇ",
-      "words": [
-        "沈沒",
-        "沈默",
-        "沈重"
-      ]
-    },
-    "木": {
-      "char": "枕",
-      "bopomofo": "ㄓㄣˇ",
-      "words": [
-        "枕頭",
-        "落枕",
-        "枕骨"
-      ]
-    },
-    "扌": {
-      "char": "拋",
-      "bopomofo": "ㄆㄠ",
-      "words": [
-        "拋棄",
-        "拋錨",
-        "拋球"
-      ]
-    }
-  },
-  "屯": {
-    "氵": {
-      "char": "沌",
-      "bopomofo": "ㄉㄨㄣˋ",
-      "words": [
-        "混沌",
-        "混混沌沌"
-      ]
-    },
-    "糸": {
-      "char": "純",
-      "bopomofo": "ㄔㄨㄣˊ",
-      "words": [
-        "單純",
-        "純潔",
-        "純真"
-      ]
-    },
-    "口": {
-      "char": "噸",
-      "bopomofo": "ㄉㄨㄣ",
-      "words": [
-        "公噸",
-        "噸位"
-      ]
-    },
-    "肉": {
-      "char": "肫",
-      "bopomofo": "ㄓㄨㄣ",
-      "words": [
-        "雞肫",
-        "鴨肫",
-        "肫肫"
-      ]
-    },
-    "釒": {
-      "char": "鈍",
-      "bopomofo": "ㄉㄨㄣˋ",
-      "words": [
-        "鈍刀",
-        "鈍器",
-        "遲鈍"
-      ]
-    }
-  },
-  "支": {
-    "扌": {
-      "char": "技",
-      "bopomofo": "ㄐㄧˋ",
-      "words": [
-        "技術",
-        "技巧",
-        "才技"
-      ]
-    },
-    "木": {
-      "char": "枝",
-      "bopomofo": "ㄓ",
-      "words": [
-        "樹枝",
-        "枝條",
-        "枝葉"
-      ]
-    },
-    "口": {
-      "char": "吱",
-      "bopomofo": "ㄓ",
-      "words": [
-        "吱吱叫",
-        "吱聲"
-      ]
-    },
-    "肉": {
-      "char": "肢",
-      "bopomofo": "ㄓ",
-      "words": [
-        "四肢",
-        "肢體",
-        "下肢"
-      ]
-    },
-    "人": {
-      "char": "伎",
-      "bopomofo": "ㄐㄧˋ",
-      "words": [
-        "舞伎",
-        "伎含",
-        "盈舞伎"
-      ]
-    },
-    "忄": {
-      "char": "忮",
-      "bopomofo": "ㄓˋ",
-      "words": [
-        "忮色"
-      ]
-    },
-    "艹": {
-      "char": "芰",
-      "bopomofo": "ㄐㄧˋ",
-      "words": [
-        "芰色"
-      ]
-    },
-    "足": {
-      "char": "跂",
-      "bopomofo": "ㄑㄧˊ",
-      "words": [
-        "跂色"
-      ]
-    }
-  },
-  "戈": {
-    "扌": {
-      "char": "找",
-      "bopomofo": "ㄓㄠˇ",
-      "words": [
-        "尋找",
-        "找錢",
-        "找到"
-      ]
-    },
-    "人": {
-      "char": "伐",
-      "bopomofo": "ㄈㄚˊ",
-      "words": [
-        "砍伐",
-        "討伐",
-        "步伐"
-      ]
-    },
-    "木": {
-      "char": "栽",
-      "bopomofo": "ㄗㄞ",
-      "words": [
-        "栽樹",
-        "栽花",
-        "栽牙"
-      ]
-    }
-  },
-  "良": {
-    "艹": {
-      "char": "茛",
-      "bopomofo": "ㄍㄣˋ",
-      "words": [
-        "毛茛",
-        "茛苕"
-      ]
-    },
-    "土": {
-      "char": "垠",
-      "bopomofo": "ㄧㄣˊ",
-      "words": [
-        "無垠",
-        "一望無垠"
-      ]
-    },
-    "釒": {
-      "char": "銀",
-      "bopomofo": "ㄧㄣˊ",
-      "words": [
-        "銀行",
-        "銀牌",
-        "銀色"
-      ]
-    },
-    "足": {
-      "char": "跟",
-      "bopomofo": "ㄍㄣ",
-      "words": [
-        "跟隨",
-        "高跟鞋",
-        "跟班"
-      ]
-    },
-    "玉": {
-      "char": "琅",
-      "bopomofo": "ㄌㄤˊ",
-      "words": [
-        "琅琅上口",
-        "琳琅滿目"
-      ]
-    },
-    "木": {
-      "char": "根",
-      "bopomofo": "ㄍㄣ",
-      "words": [
-        "樹根",
-        "根本",
-        "根基"
-      ]
-    },
-    "氵": {
-      "char": "浪",
-      "bopomofo": "ㄌㄤˋ",
-      "words": [
-        "海浪",
-        "流浪",
-        "浪費"
-      ]
-    },
-    "人": {
-      "char": "佷",
-      "bopomofo": "ㄏㄣˇ",
-      "words": [
-        "佷戾",
-        "佷山"
-      ]
-    },
-    "忄": {
-      "char": "恨",
-      "bopomofo": "ㄏㄣˋ",
-      "words": [
-        "恨意",
-        "痛恨",
-        "悔恨"
-      ]
-    },
-    "肉": {
-      "char": "朗",
-      "bopomofo": "ㄌㄤˇ",
-      "words": [
-        "明朗",
-        "晴朗",
-        "朗誦",
-        "朗讀"
-      ]
-    }
-  },
-  "佳": {
-    "土": {
-      "char": "堆",
-      "bopomofo": "ㄉㄨㄟ",
-      "words": [
-        "沙堆",
-        "堆積",
-        "土堆"
-      ]
-    },
-    "釒": {
-      "char": "錐",
-      "bopomofo": "ㄓㄨㄟ",
-      "words": [
-        "圓錐",
-        "錐子",
-        "立錐之地"
-      ]
-    },
-    "糸": {
-      "char": "維",
-      "bopomofo": "ㄨㄟˊ",
-      "words": [
-        "維護",
-        "維他命",
-        "維修"
-      ]
-    },
-    "足": {
-      "char": "雖",
-      "bopomofo": "ㄙㄨㄟ",
-      "words": [
-        "雖然",
-        "雖則"
-      ]
-    },
-    "木": {
-      "char": "椎",
-      "bopomofo": "ㄓㄨㄟ",
-      "words": [
-        "脊椎",
-        "胸椎",
-        "椎骨"
-      ]
-    },
-    "氵": {
-      "char": "淮",
-      "bopomofo": "ㄏㄨㄞˊ",
-      "words": [
-        "淮河",
-        "秦淮河"
-      ]
-    },
-    "人": {
-      "char": "佳",
-      "bopomofo": "ㄐㄧㄚ",
-      "words": [
-        "佳作",
-        "佳節",
-        "最佳"
-      ]
-    },
-    "言": {
-      "char": "誰",
-      "bopomofo": "ㄕㄨㄟˊ",
-      "words": [
-        "是誰",
-        "誰知",
-        "誰家"
-      ]
-    },
-    "扌": {
-      "char": "推",
-      "bopomofo": "ㄊㄨㄟ",
-      "words": [
-        "推動",
-        "推銷",
-        "推手"
-      ]
-    },
-    "忄": {
-      "char": "惟",
-      "bopomofo": "ㄨㄟˊ",
-      "words": [
-        "惟一",
-        "惟恐"
-      ]
-    },
-    "口": {
-      "char": "唯",
-      "bopomofo": "ㄨㄟˊ",
-      "words": [
-        "唯一",
-        "唯美",
-        "唯獨"
-      ]
-    }
-  },
-  "肖": {
-    "釒": {
-      "char": "銷",
-      "bopomofo": "ㄒㄧㄠ",
-      "words": [
-        "銷量",
-        "推銷",
-        "註銷"
-      ]
-    },
-    "足": {
-      "char": "踃",
-      "bopomofo": "ㄒㄧㄠ",
-      "words": [
-        "踃跳"
-      ]
-    },
-    "木": {
-      "char": "梢",
-      "bopomofo": "ㄕㄠ",
-      "words": [
-        "樹梢",
-        "末梢",
-        "梢頭"
-      ]
-    },
-    "氵": {
-      "char": "消",
-      "bopomofo": "ㄒㄧㄠ",
-      "words": [
-        "消失",
-        "消息",
-        "消費"
-      ]
-    },
-    "人": {
-      "char": "俏",
-      "bopomofo": "ㄑㄧㄠˋ",
-      "words": [
-        "俏皮",
-        "俊俏",
-        "俏麗"
-      ]
-    },
-    "言": {
-      "char": "誚",
-      "bopomofo": "ㄑㄧㄠˋ",
-      "words": [
-        "誚讓",
-        "譏誚"
-      ]
-    },
-    "扌": {
-      "char": "捎",
-      "bopomofo": "ㄕㄠ",
-      "words": [
-        "捎信",
-        "捎帶"
-      ]
-    },
-    "忄": {
-      "char": "悄",
-      "bopomofo": "ㄑㄧㄠˇ",
-      "words": [
-        "悄悄",
-        "悄然",
-        "靜悄悄"
-      ]
-    },
-    "口": {
-      "char": "哨",
-      "bopomofo": "ㄕㄠˋ",
-      "words": [
-        "口哨",
-        "哨所",
-        "崗哨"
-      ]
-    }
-  },
-  "者": {
-    "艹": {
-      "char": "著",
-      "bopomofo": "ㄓㄨˋ",
-      "words": [
-        "著名",
-        "著作",
-        "著急"
-      ]
-    },
-    "土": {
-      "char": "堵",
-      "bopomofo": "ㄉㄨˇ",
-      "words": [
-        "堵塞",
-        "一堵牆",
-        "防堵"
-      ]
-    },
-    "釒": {
-      "char": "鍺",
-      "bopomofo": "ㄓㄜˇ",
-      "words": [
-        "元素鍺",
-        "鍺石"
-      ]
-    },
-    "糸": {
-      "char": "緒",
-      "bopomofo": "ㄒㄩˋ",
-      "words": [
-        "情緒",
-        "思緒",
-        "頭緒"
-      ]
-    },
-    "木": {
-      "char": "楮",
-      "bopomofo": "ㄔㄨˇ",
-      "words": [
-        "楮樹",
-        "楮紙"
-      ]
-    },
-    "氵": {
-      "char": "渚",
-      "bopomofo": "ㄓㄨˇ",
-      "words": [
-        "江渚",
-        "沙渚"
-      ]
-    },
-    "言": {
-      "char": "諸",
-      "bopomofo": "ㄓㄨ",
-      "words": [
-        "諸位",
-        "諸多",
-        "諸葛亮"
-      ]
-    }
-  },
-  "果": {
-    "足": {
-      "char": "踝",
-      "bopomofo": "ㄏㄨㄞˊ",
-      "words": [
-        "腳踝",
-        "踝關節"
-      ]
-    },
-    "木": {
-      "char": "棵",
-      "bopomofo": "ㄎㄜ",
-      "words": [
-        "一棵樹",
-        "棵子"
-      ]
-    },
-    "言": {
-      "char": "課",
-      "bopomofo": "ㄎㄜˋ",
-      "words": [
-        "課本",
-        "上課",
-        "課程"
-      ]
-    },
-    "人": {
-      "char": "倮",
-      "bopomofo": "ㄌㄨㄛˇ",
-      "words": [
-        "倮色"
-      ]
-    }
-  },
-  "僉": {
-    "肉": {
-      "char": "臉",
-      "bopomofo": "ㄌㄧㄢˇ",
-      "words": [
-        "臉色",
-        "洗臉",
-        "臉譜"
-      ]
-    },
-    "木": {
-      "char": "檢",
-      "bopomofo": "ㄐㄧㄢˇ",
-      "words": [
-        "檢查",
-        "檢討",
-        "檢驗"
-      ]
-    },
-    "人": {
-      "char": "儉",
-      "bopomofo": "ㄐㄧㄢˇ",
-      "words": [
-        "節儉",
-        "儉樸",
-        "勤儉"
-      ]
-    },
-    "扌": {
-      "char": "撿",
-      "bopomofo": "ㄐㄧㄢˇ",
-      "words": [
-        "撿垃圾",
-        "撿拾",
-        "撿便宜"
-      ]
-    }
-  },
-  "音": {
-    "艹": {
-      "char": "菩",
-      "bopomofo": "ㄆㄨˊ",
-      "words": [
-        "菩薩",
-        "菩提樹"
-      ]
-    },
-    "足": {
-      "char": "踣",
-      "bopomofo": "ㄅㄟˋ",
-      "words": [
-        "踣斃",
-        "屢踣屢起"
-      ]
-    },
-    "人": {
-      "char": "倍",
-      "bopomofo": "ㄅㄟˋ",
-      "words": [
-        "加倍",
-        "倍數",
-        "百倍"
-      ]
-    },
-    "扌": {
-      "char": "培",
-      "bopomofo": "ㄆㄟˊ",
-      "words": [
-        "培養",
-        "培訓",
-        "培育"
-      ]
-    },
-    "忄": {
-      "char": "意",
-      "bopomofo": "ㄧˋ",
-      "words": [
-        "意思",
-        "春意",
-        "醉意"
-      ]
-    },
-    "言": {
-      "char": "諳",
-      "bopomofo": "ㄢ",
-      "words": [
-        "不諳",
-        "諳水",
-        "不諳水"
-      ]
-    }
-  },
-  "青": {
-    "艹": {
-      "char": "菁",
-      "bopomofo": "ㄐㄧㄥ",
-      "words": [
-        "菁華",
-        "蕪菁"
-      ]
-    },
-    "氵": {
-      "char": "清",
-      "bopomofo": "ㄑㄧㄥ",
-      "words": [
-        "清水",
-        "清楚",
-        "清潔"
-      ]
-    },
-    "人": {
-      "char": "倩",
-      "bopomofo": "ㄑㄧㄢˋ",
-      "words": [
-        "倩影",
-        "倩女"
-      ]
-    },
-    "言": {
-      "char": "請",
-      "bopomofo": "ㄑㄧㄥˇ",
-      "words": [
-        "請客",
-        "請求",
-        "請假"
-      ]
-    },
-    "忄": {
-      "char": "情",
-      "bopomofo": "ㄑㄧㄥˊ",
-      "words": [
-        "事情",
-        "感情",
-        "情況"
-      ]
-    }
-  },
-  "軍": {
-    "艹": {
-      "char": "葷",
-      "bopomofo": "ㄏㄨㄣ",
-      "words": [
-        "葷食",
-        "葷菜"
-      ]
-    },
-    "氵": {
-      "char": "渾",
-      "bopomofo": "ㄏㄨㄣˊ",
-      "words": [
-        "渾身",
-        "渾濁",
-        "渾水摸魚"
-      ]
-    },
-    "扌": {
-      "char": "揮",
-      "bopomofo": "ㄏㄨㄟ",
-      "words": [
-        "揮手",
-        "揮舞",
-        "揮霍"
-      ]
-    },
-    "忄": {
-      "char": "惲",
-      "bopomofo": "ㄩㄣˋ",
-      "words": [
-        "惲代英",
-        "姓惲"
-      ]
-    },
-    "言": {
-      "char": "諢",
-      "bopomofo": "ㄏㄨㄣˋ",
-      "words": [
-        "打諢",
-        "科打諢"
-      ]
-    }
-  },
-  "里": {
-    "土": {
-      "char": "埋",
-      "bopomofo": "ㄇㄞˊ",
-      "words": [
-        "埋怨",
-        "埋葬",
-        "埋頭苦幹"
-      ]
-    },
-    "釒": {
-      "char": "鋰",
-      "bopomofo": "ㄌㄧˇ",
-      "words": [
-        "鋰電池",
-        "金屬鋰"
-      ]
-    },
-    "玉": {
-      "char": "理",
-      "bopomofo": "ㄌㄧˇ",
-      "words": [
-        "道理",
-        "整理",
-        "理解"
-      ]
-    },
-    "人": {
-      "char": "俚",
-      "bopomofo": "ㄌㄧˇ",
-      "words": [
-        "俚語",
-        "俚俗"
-      ]
-    },
-    "口": {
-      "char": "哩",
-      "bopomofo": "ㄌㄧ",
-      "words": [
-        "哩哩啦啦",
-        "英哩"
-      ]
-    }
-  },
-  "會": {
-    "糸": {
-      "char": "繪",
-      "bopomofo": "ㄏㄨㄟˋ",
-      "words": [
-        "繪畫",
-        "彩繪",
-        "描繪"
-      ]
-    },
-    "肉": {
-      "char": "膾",
-      "bopomofo": "ㄎㄨㄞˋ",
-      "words": [
-        "膾炙人口",
-        "膾魚"
-      ]
-    },
-    "木": {
-      "char": "檜",
-      "bopomofo": "ㄍㄨㄟˋ",
-      "words": [
-        "檜木",
-        "紅檜"
-      ]
-    },
-    "人": {
-      "char": "儈",
-      "bopomofo": "ㄎㄨㄞˋ",
-      "words": [
-        "市儈",
-        "牙儈"
-      ]
-    },
-    "艹": {
-      "char": "薈",
-      "bopomofo": "ㄏㄨㄟˋ",
-      "words": [
-        "文薈",
-        "薈萃",
-        "人文薈"
-      ]
-    }
-  },
-  "每": {
-    "木": {
-      "char": "梅",
-      "bopomofo": "ㄇㄟˊ",
-      "words": [
-        "梅花",
-        "青梅竹馬",
-        "楊梅"
-      ]
-    },
-    "氵": {
-      "char": "海",
-      "bopomofo": "ㄏㄞˇ",
-      "words": [
-        "海洋",
-        "海水",
-        "海灘"
-      ]
-    },
-    "人": {
-      "char": "侮",
-      "bopomofo": "ㄨˇ",
-      "words": [
-        "侮辱",
-        "欺侮",
-        "輕侮"
-      ]
-    },
-    "言": {
-      "char": "誨",
-      "bopomofo": "ㄏㄨㄟˋ",
-      "words": [
-        "教誨",
-        "誨人不倦"
-      ]
-    },
-    "忄": {
-      "char": "悔",
-      "bopomofo": "ㄏㄨㄟˇ",
-      "words": [
-        "後悔",
-        "悔恨",
-        "懺悔"
-      ]
-    },
-    "肉": {
-      "char": "脢",
-      "bopomofo": "ㄇㄟˊ",
-      "words": [
-        "脢子肉"
-      ]
-    },
-    "艹": {
-      "char": "莓",
-      "bopomofo": "ㄇㄟˊ",
-      "words": [
-        "草莓"
-      ]
-    }
-  },
-  "甬": {
-    "足": {
-      "char": "踊",
-      "bopomofo": "ㄩㄥˇ",
-      "words": [
-        "踴躍",
-        "踊貴"
-      ]
-    },
-    "木": {
-      "char": "桶",
-      "bopomofo": "ㄊㄨㄥˇ",
-      "words": [
-        "木桶",
-        "水桶",
-        "垃圾桶"
-      ]
-    },
-    "氵": {
-      "char": "湧",
-      "bopomofo": "ㄩㄥˇ",
-      "words": [
-        "湧現",
-        "湧出",
-        "泉湧"
-      ]
-    },
-    "人": {
-      "char": "俑",
-      "bopomofo": "ㄩㄥˇ",
-      "words": [
-        "兵馬俑",
-        "始作俑者"
-      ]
-    },
-    "言": {
-      "char": "誦",
-      "bopomofo": "ㄙㄨㄥˋ",
-      "words": [
-        "朗誦",
-        "背誦",
-        "誦經"
-      ]
-    },
-    "扌": {
-      "char": "捅",
-      "bopomofo": "ㄊㄨㄥˇ",
-      "words": [
-        "捅馬蜂窩",
-        "捅破"
-      ]
-    },
-    "忄": {
-      "char": "恿",
-      "bopomofo": "ㄩㄥˇ",
-      "words": [
-        "慫恿"
-      ]
-    }
-  },
-  "見": {
-    "艹": {
-      "char": "莧",
-      "bopomofo": "ㄒㄧㄢˋ",
-      "words": [
-        "莧菜",
-        "野莧"
-      ]
-    },
-    "玉": {
-      "char": "現",
-      "bopomofo": "ㄒㄧㄢˋ",
-      "words": [
-        "現在",
-        "現場",
-        "表現"
-      ]
-    }
-  },
-  "重": {
-    "艹": {
-      "char": "董",
-      "bopomofo": "ㄉㄨㄥˇ",
-      "words": [
-        "董事長",
-        "董理"
-      ]
-    },
-    "釒": {
-      "char": "鍾",
-      "bopomofo": "ㄓㄨㄥ",
-      "words": [
-        "鍾愛",
-        "鍾情",
-        "姓鍾"
-      ]
-    },
-    "足": {
-      "char": "踵",
-      "bopomofo": "ㄓㄨㄥˇ",
-      "words": [
-        "接踵而來",
-        "踵事增華"
-      ]
-    },
-    "肉": {
-      "char": "腫",
-      "bopomofo": "ㄓㄨㄥˇ",
-      "words": [
-        "腫脹",
-        "紅腫",
-        "腫瘤"
-      ]
-    }
-  },
-  "唐": {
-    "土": {
-      "char": "塘",
-      "bopomofo": "ㄊㄤˊ",
-      "words": [
-        "池塘",
-        "塘堰"
-      ]
-    },
-    "扌": {
-      "char": "搪",
-      "bopomofo": "ㄊㄤˊ",
-      "words": [
-        "搪塞",
-        "搪瓷"
-      ]
-    },
-    "氵": {
-      "char": "溏",
-      "bopomofo": "ㄊㄤˊ",
-      "words": [
-        "溏便",
-        "溏心"
-      ]
-    }
-  },
-  "宗": {
-    "糸": {
-      "char": "綜",
-      "bopomofo": "ㄗㄨㄥ",
-      "words": [
-        "綜合",
-        "綜藝",
-        "錯綜複雜"
-      ]
-    },
-    "玉": {
-      "char": "琮",
-      "bopomofo": "ㄘㄨㄥˊ",
-      "words": [
-        "琮璧",
-        "玉琮"
-      ]
-    },
-    "木": {
-      "char": "棕",
-      "bopomofo": "ㄗㄨㄥ",
-      "words": [
-        "棕色",
-        "棕櫚樹",
-        "椰棕"
-      ]
-    },
-    "氵": {
-      "char": "淙",
-      "bopomofo": "ㄘㄨㄥ",
-      "words": [
-        "淙淙流水",
-        "淙淙"
-      ]
-    },
-    "忄": {
-      "char": "悰",
-      "bopomofo": "ㄘㄨㄥˊ",
-      "words": [
-        "樂悰",
-        "歡悰"
-      ]
-    }
-  },
-  "或": {
-    "土": {
-      "char": "域",
-      "bopomofo": "ㄩˋ",
-      "words": [
-        "領域",
-        "區域",
-        "地域"
-      ]
-    },
-    "忄": {
-      "char": "惑",
-      "bopomofo": "ㄏㄨㄛˋ",
-      "words": [
-        "疑惑",
-        "迷惑",
-        "誘惑"
-      ]
-    }
-  },
-  "侖": {
-    "氵": {
-      "char": "淪",
-      "bopomofo": "ㄌㄨㄣˊ",
-      "words": [
-        "淪陷",
-        "淪落",
-        "沉淪"
-      ]
-    },
-    "人": {
-      "char": "倫",
-      "bopomofo": "ㄌㄨㄣˊ",
-      "words": [
-        "倫理",
-        "天倫之樂",
-        "倫敦"
-      ]
-    },
-    "言": {
-      "char": "論",
-      "bopomofo": "ㄌㄨㄣˋ",
-      "words": [
-        "討論",
-        "論文",
-        "觀點論"
-      ]
-    },
-    "扌": {
-      "char": "掄",
-      "bopomofo": "ㄌㄨㄣˊ",
-      "words": [
-        "掄拳",
-        "掄板斧"
-      ]
-    },
-    "糸": {
-      "char": "綸",
-      "bopomofo": "ㄌㄨㄣˊ",
-      "words": [
-        "有綸",
-        "綸直",
-        "國有綸"
-      ]
-    }
-  },
-  "易": {
-    "土": {
-      "char": "場",
-      "bopomofo": "ㄔㄤˊ",
-      "words": [
-        "操場",
-        "市場",
-        "場合"
-      ]
-    },
-    "釒": {
-      "char": "錫",
-      "bopomofo": "ㄒㄧˊ",
-      "words": [
-        "金屬錫",
-        "錫箔紙",
-        "無錫"
-      ]
-    },
-    "肉": {
-      "char": "腸",
-      "bopomofo": "ㄔㄤˊ",
-      "words": [
-        "大腸",
-        "香腸",
-        "心腸"
-      ]
-    },
-    "玉": {
-      "char": "瑒",
-      "bopomofo": "ㄧㄤˊ",
-      "words": [
-        "瑒玉",
-        "瑒琠"
-      ]
-    },
-    "木": {
-      "char": "楊",
-      "bopomofo": "ㄧㄤˊ",
-      "words": [
-        "楊樹",
-        "百家姓楊",
-        "楊桃"
-      ]
-    },
-    "氵": {
-      "char": "湯",
-      "bopomofo": "ㄊㄤ",
-      "words": [
-        "喝湯",
-        "湯圓",
-        "熱湯"
-      ]
-    },
-    "扌": {
-      "char": "揚",
-      "bopomofo": "ㄧㄤˊ",
-      "words": [
-        "表揚",
-        "揚手",
-        "昂首挺揚"
-      ]
-    },
-    "忄": {
-      "char": "惕",
-      "bopomofo": "ㄊㄧˋ",
-      "words": [
-        "警惕"
-      ]
-    },
-    "足": {
-      "char": "踢",
-      "bopomofo": "ㄊㄧ",
-      "words": [
-        "踢皮",
-        "踢皮球",
-        "踢他"
-      ]
-    }
-  },
-  "厂": {
-    "人": {
-      "char": "仄",
-      "bopomofo": "ㄗㄜˋ",
-      "words": [
-        "狹仄",
-        "仄路",
-        "仄聲"
-      ]
-    },
-    "口": {
-      "char": "嚴",
-      "bopomofo": "ㄧㄢˊ",
-      "words": [
-        "態嚴",
-        "嚴重",
-        "事態嚴"
-      ]
-    },
-    "言": {
-      "char": "詹",
-      "bopomofo": "ㄓㄢ",
-      "words": [
-        "謹詹",
-        "詹於",
-        "謹詹於"
       ]
     }
   },
@@ -1667,27 +1187,90 @@ const COMBINATIONS = {
         "一朵花"
       ]
     },
-    "氵": {
-      "char": "沿",
-      "bopomofo": "ㄧㄢˊ",
-      "words": [
-        "沿途",
-        "沿街",
-        "沿街叫"
-      ]
-    },
     "肉": {
       "char": "肌",
       "bopomofo": "ㄐㄧ",
       "words": [
         "面黃肌瘦"
       ]
-    },
-    "釒": {
-      "char": "鉛",
-      "bopomofo": "ㄑㄧㄢ",
+    }
+  },
+  "子": {
+    "人": {
+      "char": "仔",
+      "bopomofo": "ㄗ",
       "words": [
-        "鉛色"
+        "仔細",
+        "牛仔褲"
+      ]
+    },
+    "木": {
+      "char": "李",
+      "bopomofo": "ㄌㄧˇ",
+      "words": [
+        "李子",
+        "行李",
+        "桃李"
+      ]
+    }
+  },
+  "寸": {
+    "人": {
+      "char": "付",
+      "bopomofo": "ㄈㄨˋ",
+      "words": [
+        "交付",
+        "託付",
+        "付款"
+      ]
+    },
+    "口": {
+      "char": "吋",
+      "bopomofo": "ㄘㄨㄣˋ",
+      "words": [
+        "吋子"
+      ]
+    },
+    "忄": {
+      "char": "忖",
+      "bopomofo": "ㄘㄨㄣˇ",
+      "words": [
+        "忖度",
+        "思忖"
+      ]
+    },
+    "木": {
+      "char": "村",
+      "bopomofo": "ㄘㄨㄣ",
+      "words": [
+        "農村",
+        "村莊",
+        "村民"
+      ]
+    },
+    "糸": {
+      "char": "紂",
+      "bopomofo": "ㄓㄡˋ",
+      "words": [
+        "紂色"
+      ]
+    },
+    "肉": {
+      "char": "肘",
+      "bopomofo": "ㄓㄡˇ",
+      "words": [
+        "臂肘",
+        "肘兒",
+        "胳臂肘"
+      ]
+    },
+    "言": {
+      "char": "討",
+      "bopomofo": "ㄊㄠˇ",
+      "words": [
+        "討論",
+        "討厭",
+        "討好"
       ]
     }
   },
@@ -1724,11 +1307,14 @@ const COMBINATIONS = {
         "效仿"
       ]
     },
-    "忄": {
-      "char": "愣",
-      "bopomofo": "ㄌㄥ",
+    "土": {
+      "char": "坊",
+      "bopomofo": "ㄈㄤ",
       "words": [
-        "愣兒"
+        "街坊",
+        "磨坊",
+        "工作坊",
+        "染坊"
       ]
     },
     "木": {
@@ -1777,6 +1363,80 @@ const COMBINATIONS = {
       "words": [
         "入伍"
       ]
+    },
+    "口": {
+      "char": "吾",
+      "bopomofo": "ㄨˊ",
+      "words": [
+        "吾吾"
+      ]
+    }
+  },
+  "支": {
+    "人": {
+      "char": "伎",
+      "bopomofo": "ㄐㄧˋ",
+      "words": [
+        "舞伎",
+        "伎含",
+        "盈舞伎"
+      ]
+    },
+    "口": {
+      "char": "吱",
+      "bopomofo": "ㄓ",
+      "words": [
+        "吱吱叫",
+        "吱聲"
+      ]
+    },
+    "忄": {
+      "char": "忮",
+      "bopomofo": "ㄓˋ",
+      "words": [
+        "忮色"
+      ]
+    },
+    "扌": {
+      "char": "技",
+      "bopomofo": "ㄐㄧˋ",
+      "words": [
+        "技術",
+        "技巧",
+        "才技"
+      ]
+    },
+    "木": {
+      "char": "枝",
+      "bopomofo": "ㄑㄧˊ",
+      "words": [
+        "樹枝",
+        "枝條",
+        "枝葉"
+      ]
+    },
+    "肉": {
+      "char": "肢",
+      "bopomofo": "ㄓ",
+      "words": [
+        "四肢",
+        "肢體",
+        "下肢"
+      ]
+    },
+    "艹": {
+      "char": "芰",
+      "bopomofo": "ㄐㄧˋ",
+      "words": [
+        "芰色"
+      ]
+    },
+    "足": {
+      "char": "跂",
+      "bopomofo": "ㄑㄧˊ",
+      "words": [
+        "跂色"
+      ]
     }
   },
   "犬": {
@@ -1790,13 +1450,41 @@ const COMBINATIONS = {
         "危機四伏"
       ]
     },
-    "艹": {
-      "char": "莽",
-      "bopomofo": "ㄇㄤˇ",
+    "口": {
+      "char": "吠",
+      "bopomofo": "ㄈㄟˋ",
       "words": [
-        "莽草",
-        "莽夫",
-        "莽漢"
+        "蜀犬吠日",
+        "狂吠"
+      ]
+    }
+  },
+  "戈": {
+    "人": {
+      "char": "伐",
+      "bopomofo": "ㄈㄚ",
+      "words": [
+        "砍伐",
+        "討伐",
+        "步伐"
+      ]
+    },
+    "扌": {
+      "char": "找",
+      "bopomofo": "ㄓㄠˇ",
+      "words": [
+        "尋找",
+        "找錢",
+        "找到"
+      ]
+    },
+    "木": {
+      "char": "栽",
+      "bopomofo": "ㄗㄞ",
+      "words": [
+        "栽樹",
+        "栽花",
+        "栽牙"
       ]
     }
   },
@@ -1853,12 +1541,19 @@ const COMBINATIONS = {
       ]
     },
     "口": {
-      "char": "哥",
-      "bopomofo": "ㄍㄜ",
+      "char": "呵",
+      "bopomofo": "ㄏㄜ",
       "words": [
-        "大哥",
-        "哥哥",
-        "老哥"
+        "呵責",
+        "呵叱",
+        "呵手"
+      ]
+    },
+    "土": {
+      "char": "坷",
+      "bopomofo": "ㄎㄜˇ",
+      "words": [
+        "坷子"
       ]
     },
     "木": {
@@ -1878,6 +1573,13 @@ const COMBINATIONS = {
         "運河",
         "河套",
         "星河"
+      ]
+    },
+    "玉": {
+      "char": "珂",
+      "bopomofo": "ㄎㄜ",
+      "words": [
+        "珂子"
       ]
     },
     "艹": {
@@ -1905,11 +1607,18 @@ const COMBINATIONS = {
         "作坊"
       ]
     },
-    "忄": {
-      "char": "怍",
-      "bopomofo": "ㄗㄨㄛˋ",
+    "口": {
+      "char": "咋",
+      "bopomofo": "ㄓㄚˋ",
       "words": [
-        "愧怍"
+        "咋子"
+      ]
+    },
+    "忄": {
+      "char": "怎",
+      "bopomofo": "ㄗㄜˇ",
+      "words": [
+        "怎麼"
       ]
     },
     "木": {
@@ -1949,6 +1658,13 @@ const COMBINATIONS = {
       "bopomofo": "ㄧㄤˊ",
       "words": [
         "佯子"
+      ]
+    },
+    "口": {
+      "char": "咩",
+      "bopomofo": "ㄇㄧㄝ",
+      "words": [
+        "咩子"
       ]
     },
     "忄": {
@@ -2013,6 +1729,13 @@ const COMBINATIONS = {
         "洮河"
       ]
     },
+    "玉": {
+      "char": "珧",
+      "bopomofo": "ㄧㄠˊ",
+      "words": [
+        "珧子"
+      ]
+    },
     "足": {
       "char": "跳",
       "bopomofo": "ㄊㄧㄠˋ",
@@ -2030,63 +1753,6 @@ const COMBINATIONS = {
         "瓦銚",
         "茶銚",
         "酒銚"
-      ]
-    }
-  },
-  "口": {
-    "人": {
-      "char": "侃",
-      "bopomofo": "ㄎㄢˇ",
-      "words": [
-        "侃侃",
-        "侃爾"
-      ]
-    },
-    "口": {
-      "char": "古",
-      "bopomofo": "ㄍㄨˇ",
-      "words": [
-        "古今中外",
-        "貴古賤今"
-      ]
-    },
-    "扌": {
-      "char": "扣",
-      "bopomofo": "ㄎㄡˋ",
-      "words": [
-        "扣緊",
-        "扣押",
-        "扣留"
-      ]
-    },
-    "木": {
-      "char": "杏",
-      "bopomofo": "ㄒㄧㄥˋ",
-      "words": [
-        "杏色"
-      ]
-    },
-    "言": {
-      "char": "言",
-      "bopomofo": "ㄧㄢˊ",
-      "words": [
-        "難言",
-        "言之",
-        "難言之"
-      ]
-    },
-    "足": {
-      "char": "足",
-      "bopomofo": "ㄐㄩˋ",
-      "words": [
-        "足恭"
-      ]
-    },
-    "釒": {
-      "char": "釦",
-      "bopomofo": "ㄎㄡˋ",
-      "words": [
-        "釦色"
       ]
     }
   },
@@ -2131,6 +1797,13 @@ const COMBINATIONS = {
       "bopomofo": "ㄉㄨㄥˋ",
       "words": [
         "侗族"
+      ]
+    },
+    "土": {
+      "char": "垌",
+      "bopomofo": "ㄉㄨㄥˋ",
+      "words": [
+        "垌子"
       ]
     },
     "忄": {
@@ -2180,12 +1853,79 @@ const COMBINATIONS = {
       ]
     }
   },
+  "每": {
+    "人": {
+      "char": "侮",
+      "bopomofo": "ㄨˇ",
+      "words": [
+        "侮辱",
+        "欺侮",
+        "輕侮"
+      ]
+    },
+    "忄": {
+      "char": "悔",
+      "bopomofo": "ㄏㄨㄟˇ",
+      "words": [
+        "後悔",
+        "悔恨",
+        "懺悔"
+      ]
+    },
+    "木": {
+      "char": "梅",
+      "bopomofo": "ㄇㄟˊ",
+      "words": [
+        "梅花",
+        "青梅竹馬",
+        "楊梅"
+      ]
+    },
+    "氵": {
+      "char": "海",
+      "bopomofo": "ㄏㄞˇ",
+      "words": [
+        "海洋",
+        "海水",
+        "海灘"
+      ]
+    },
+    "肉": {
+      "char": "脢",
+      "bopomofo": "ㄇㄟˊ",
+      "words": [
+        "脢子肉"
+      ]
+    },
+    "艹": {
+      "char": "莓",
+      "bopomofo": "ㄇㄟˊ",
+      "words": [
+        "草莓"
+      ]
+    },
+    "言": {
+      "char": "誨",
+      "bopomofo": "ㄏㄨㄟˇ",
+      "words": [
+        "教誨",
+        "誨人不倦"
+      ]
+    }
+  },
   "我": {
     "人": {
       "char": "俄",
       "bopomofo": "ㄜˊ",
       "words": [
         "俄羅斯"
+      ]
+    },
+    "口": {
+      "char": "哦",
+      "bopomofo": "ㄛˊ",
+      "words": [
+        "哦子"
       ]
     },
     "艹": {
@@ -2198,48 +1938,133 @@ const COMBINATIONS = {
       ]
     }
   },
-  "且": {
+  "肖": {
     "人": {
-      "char": "俎",
-      "bopomofo": "ㄗㄨˇ",
+      "char": "俏",
+      "bopomofo": "ㄑㄧㄠˋ",
       "words": [
-        "有俎",
-        "俎有",
-        "代有俎"
+        "俏皮",
+        "俊俏",
+        "俏麗"
+      ]
+    },
+    "口": {
+      "char": "哨",
+      "bopomofo": "ㄕㄠˋ",
+      "words": [
+        "口哨",
+        "哨所",
+        "崗哨"
+      ]
+    },
+    "忄": {
+      "char": "悄",
+      "bopomofo": "ㄑㄧㄠˇ",
+      "words": [
+        "悄悄",
+        "悄然",
+        "靜悄悄"
+      ]
+    },
+    "扌": {
+      "char": "捎",
+      "bopomofo": "ㄕㄠ",
+      "words": [
+        "捎信",
+        "捎帶"
+      ]
+    },
+    "木": {
+      "char": "梢",
+      "bopomofo": "ㄕㄠ",
+      "words": [
+        "樹梢",
+        "末梢",
+        "梢頭"
       ]
     },
     "氵": {
-      "char": "沮",
-      "bopomofo": "ㄐㄩ",
+      "char": "消",
+      "bopomofo": "ㄒㄧㄠ",
       "words": [
-        "沮壞",
-        "沮喪",
-        "氣沮"
-      ]
-    },
-    "糸": {
-      "char": "組",
-      "bopomofo": "ㄗㄨˇ",
-      "words": [
-        "小組",
-        "組織",
-        "組閣"
-      ]
-    },
-    "艹": {
-      "char": "苴",
-      "bopomofo": "ㄐㄩ",
-      "words": [
-        "有苴",
-        "苴那",
-        "代有苴"
+        "消失",
+        "消息",
+        "消費"
       ]
     },
     "言": {
-      "char": "詛",
-      "bopomofo": "ㄗㄨˇ",
+      "char": "誚",
+      "bopomofo": "ㄑㄧㄠˋ",
       "words": [
-        "詛咒"
+        "誚讓",
+        "譏誚"
+      ]
+    },
+    "釒": {
+      "char": "銷",
+      "bopomofo": "ㄒㄧㄠ",
+      "words": [
+        "銷量",
+        "推銷",
+        "註銷"
+      ]
+    }
+  },
+  "甬": {
+    "人": {
+      "char": "俑",
+      "bopomofo": "ㄩㄥˇ",
+      "words": [
+        "兵馬俑",
+        "始作俑者"
+      ]
+    },
+    "忄": {
+      "char": "恿",
+      "bopomofo": "ㄩㄥˇ",
+      "words": [
+        "慫恿"
+      ]
+    },
+    "扌": {
+      "char": "捅",
+      "bopomofo": "ㄊㄨㄥˇ",
+      "words": [
+        "捅馬蜂窩",
+        "捅破"
+      ]
+    },
+    "木": {
+      "char": "桶",
+      "bopomofo": "ㄊㄨㄥˇ",
+      "words": [
+        "木桶",
+        "水桶",
+        "垃圾桶"
+      ]
+    },
+    "氵": {
+      "char": "涌",
+      "bopomofo": "ㄩㄥˇ",
+      "words": [
+        "涌子"
+      ]
+    },
+    "言": {
+      "char": "誦",
+      "bopomofo": "ㄙㄨㄥˋ",
+      "words": [
+        "朗誦",
+        "背誦",
+        "誦經"
+      ]
+    },
+    "足": {
+      "char": "踊",
+      "bopomofo": "ㄩㄥˇ",
+      "words": [
+        "踴躍",
+        "踊貴"
       ]
     }
   },
@@ -2274,11 +2099,20 @@ const COMBINATIONS = {
         "俳體"
       ]
     },
-    "忄": {
-      "char": "悱",
-      "bopomofo": "ㄈㄟˇ",
+    "口": {
+      "char": "啡",
+      "bopomofo": "ㄈㄟ",
       "words": [
-        "悱色"
+        "啡子"
+      ]
+    },
+    "忄": {
+      "char": "悲",
+      "bopomofo": "ㄅㄟ",
+      "words": [
+        "含悲",
+        "樂極生悲",
+        "慈悲"
       ]
     },
     "扌": {
@@ -2324,6 +2158,131 @@ const COMBINATIONS = {
       ]
     }
   },
+  "青": {
+    "人": {
+      "char": "倩",
+      "bopomofo": "ㄑㄧㄢˋ",
+      "words": [
+        "倩影",
+        "倩女"
+      ]
+    },
+    "忄": {
+      "char": "情",
+      "bopomofo": "ㄑㄧㄥˊ",
+      "words": [
+        "事情",
+        "感情",
+        "情況"
+      ]
+    },
+    "氵": {
+      "char": "清",
+      "bopomofo": "ㄑㄧㄥ",
+      "words": [
+        "清水",
+        "清楚",
+        "清潔"
+      ]
+    },
+    "艹": {
+      "char": "菁",
+      "bopomofo": "ㄐㄧㄥ",
+      "words": [
+        "菁華",
+        "蕪菁"
+      ]
+    },
+    "言": {
+      "char": "請",
+      "bopomofo": "ㄑㄧㄥˇ",
+      "words": [
+        "請客",
+        "請求",
+        "請假"
+      ]
+    }
+  },
+  "侖": {
+    "人": {
+      "char": "倫",
+      "bopomofo": "ㄌㄨㄣˊ",
+      "words": [
+        "倫理",
+        "天倫之樂",
+        "倫敦"
+      ]
+    },
+    "扌": {
+      "char": "掄",
+      "bopomofo": "ㄌㄨㄣˊ",
+      "words": [
+        "掄拳",
+        "掄板斧"
+      ]
+    },
+    "氵": {
+      "char": "淪",
+      "bopomofo": "ㄌㄨㄣˊ",
+      "words": [
+        "淪陷",
+        "淪落",
+        "沉淪"
+      ]
+    },
+    "糸": {
+      "char": "綸",
+      "bopomofo": "ㄌㄨㄣˊ",
+      "words": [
+        "有綸",
+        "綸直",
+        "國有綸"
+      ]
+    },
+    "言": {
+      "char": "論",
+      "bopomofo": "ㄌㄨㄣˊ",
+      "words": [
+        "討論",
+        "論文",
+        "觀點論"
+      ]
+    }
+  },
+  "果": {
+    "人": {
+      "char": "倮",
+      "bopomofo": "ㄌㄨㄛˇ",
+      "words": [
+        "倮色"
+      ]
+    },
+    "木": {
+      "char": "棵",
+      "bopomofo": "ㄎㄜ",
+      "words": [
+        "一棵樹",
+        "棵子"
+      ]
+    },
+    "言": {
+      "char": "課",
+      "bopomofo": "ㄎㄜˋ",
+      "words": [
+        "課本",
+        "上課",
+        "課程"
+      ]
+    },
+    "足": {
+      "char": "踝",
+      "bopomofo": "ㄏㄨㄞˊ",
+      "words": [
+        "腳踝",
+        "踝關節"
+      ]
+    }
+  },
   "韋": {
     "人": {
       "char": "偉",
@@ -2331,6 +2290,13 @@ const COMBINATIONS = {
       "words": [
         "偉績",
         "豐功偉業"
+      ]
+    },
+    "玉": {
+      "char": "瑋",
+      "bopomofo": "ㄨㄟˇ",
+      "words": [
+        "瑋子"
       ]
     },
     "糸": {
@@ -2369,6 +2335,13 @@ const COMBINATIONS = {
         "佳偶天成"
       ]
     },
+    "口": {
+      "char": "喁",
+      "bopomofo": "ㄩˊ",
+      "words": [
+        "喁子"
+      ]
+    },
     "忄": {
       "char": "愚",
       "bopomofo": "ㄩˊ",
@@ -2396,6 +2369,13 @@ const COMBINATIONS = {
         "傀色"
       ]
     },
+    "土": {
+      "char": "塊",
+      "bopomofo": "ㄎㄨㄞˋ",
+      "words": [
+        "冰塊"
+      ]
+    },
     "忄": {
       "char": "愧",
       "bopomofo": "ㄎㄨㄟˋ",
@@ -2411,6 +2391,15 @@ const COMBINATIONS = {
         "科槐",
         "槐樹",
         "豆科槐"
+      ]
+    },
+    "玉": {
+      "char": "瑰",
+      "bopomofo": "ㄍㄨㄟ",
+      "words": [
+        "瓊瑰",
+        "瑰奇",
+        "瑰寶"
       ]
     },
     "艹": {
@@ -2449,14 +2438,122 @@ const COMBINATIONS = {
       ]
     }
   },
-  "土": {
-    "土": {
-      "char": "在",
-      "bopomofo": "ㄗㄞˋ",
+  "會": {
+    "人": {
+      "char": "儈",
+      "bopomofo": "ㄎㄨㄞˋ",
       "words": [
-        "健在",
-        "永在",
-        "神永在"
+        "市儈",
+        "牙儈"
+      ]
+    },
+    "口": {
+      "char": "噲",
+      "bopomofo": "ㄎㄨㄞˋ",
+      "words": [
+        "噲子"
+      ]
+    },
+    "木": {
+      "char": "檜",
+      "bopomofo": "ㄍㄨㄟˋ",
+      "words": [
+        "檜木",
+        "紅檜"
+      ]
+    },
+    "糸": {
+      "char": "繪",
+      "bopomofo": "ㄏㄨㄟˋ",
+      "words": [
+        "繪畫",
+        "彩繪",
+        "描繪"
+      ]
+    },
+    "肉": {
+      "char": "膾",
+      "bopomofo": "ㄎㄨㄞˋ",
+      "words": [
+        "膾炙人口",
+        "膾魚"
+      ]
+    },
+    "艹": {
+      "char": "薈",
+      "bopomofo": "ㄏㄨㄟˋ",
+      "words": [
+        "文薈",
+        "薈萃",
+        "人文薈"
+      ]
+    }
+  },
+  "僉": {
+    "人": {
+      "char": "儉",
+      "bopomofo": "ㄐㄧㄢˇ",
+      "words": [
+        "節儉",
+        "儉樸",
+        "勤儉"
+      ]
+    },
+    "扌": {
+      "char": "撿",
+      "bopomofo": "ㄐㄧㄢˇ",
+      "words": [
+        "撿垃圾",
+        "撿拾",
+        "撿便宜"
+      ]
+    },
+    "木": {
+      "char": "檢",
+      "bopomofo": "ㄐㄧㄢˇ",
+      "words": [
+        "檢查",
+        "檢討",
+        "檢驗"
+      ]
+    },
+    "肉": {
+      "char": "臉",
+      "bopomofo": "ㄌㄧㄢˇ",
+      "words": [
+        "臉色",
+        "洗臉",
+        "臉譜"
+      ]
+    }
+  },
+  "又": {
+    "口": {
+      "char": "叹",
+      "bopomofo": "ㄊㄢˋ",
+      "words": [
+        "嘆氣",
+        "嘆息"
+      ]
+    }
+  },
+  "土": {
+    "口": {
+      "char": "吐",
+      "bopomofo": "ㄊㄨˇ",
+      "words": [
+        "吐痰",
+        "吐哺",
+        "吐露"
+      ]
+    },
+    "土": {
+      "char": "圭",
+      "bopomofo": "ㄍㄨㄟ",
+      "words": [
+        "日圭",
+        "圭表",
+        "圭臬"
       ]
     },
     "木": {
@@ -2465,15 +2562,6 @@ const COMBINATIONS = {
       "words": [
         "杜塞",
         "杜絕"
-      ]
-    },
-    "玉": {
-      "char": "王",
-      "bopomofo": "ㄨㄤˊ",
-      "words": [
-        "君王",
-        "帝王",
-        "國王"
       ]
     },
     "肉": {
@@ -2493,6 +2581,14 @@ const COMBINATIONS = {
     }
   },
   "文": {
+    "口": {
+      "char": "吝",
+      "bopomofo": "ㄌㄧㄣˋ",
+      "words": [
+        "吝嗇",
+        "吝惜"
+      ]
+    },
     "忄": {
       "char": "忞",
       "bopomofo": "ㄇㄧㄣˊ",
@@ -2507,16 +2603,33 @@ const COMBINATIONS = {
         "汶水"
       ]
     },
-    "糸": {
-      "char": "紊",
-      "bopomofo": "ㄨㄣˋ",
+    "玉": {
+      "char": "玟",
+      "bopomofo": "ㄇㄧㄣˊ",
       "words": [
-        "不紊",
-        "條不紊"
+        "玟子"
+      ]
+    },
+    "糸": {
+      "char": "紋",
+      "bopomofo": "ㄨㄣˊ",
+      "words": [
+        "指紋",
+        "皺紋",
+        "紋身"
       ]
     }
   },
   "不": {
+    "口": {
+      "char": "否",
+      "bopomofo": "ㄆㄧˇ",
+      "words": [
+        "否極泰來",
+        "否德",
+        "臧否人物"
+      ]
+    },
     "木": {
       "char": "杯",
       "bopomofo": "ㄅㄟ",
@@ -2527,157 +2640,68 @@ const COMBINATIONS = {
       ]
     }
   },
-  "夗": {
-    "忄": {
-      "char": "怨",
-      "bopomofo": "ㄩㄢ",
+  "巴": {
+    "口": {
+      "char": "吧",
+      "bopomofo": "˙ㄅㄚ",
       "words": [
-        "結怨",
-        "宿怨",
-        "報怨"
+        "酒吧",
+        "吧檯",
+        "吧女"
       ]
     },
-    "艹": {
-      "char": "苑",
-      "bopomofo": "ㄩˋ",
+    "扌": {
+      "char": "把",
+      "bopomofo": "ㄅㄚˇ",
       "words": [
-        "林苑",
-        "上林苑",
-        "藝苑"
-      ]
-    }
-  },
-  "艮": {
-    "忄": {
-      "char": "恨",
-      "bopomofo": "ㄏㄣˋ",
-      "words": [
-        "恨意",
-        "痛恨",
-        "悔恨"
+        "把手言歡",
+        "把守",
+        "把關"
       ]
     },
     "木": {
-      "char": "根",
-      "bopomofo": "ㄍㄣ",
+      "char": "杷",
+      "bopomofo": "˙ㄅㄚ",
       "words": [
-        "樹根",
-        "根本",
-        "根基"
-      ]
-    },
-    "艹": {
-      "char": "茛",
-      "bopomofo": "ㄍㄣˋ",
-      "words": [
-        "毛茛",
-        "茛苕"
-      ]
-    },
-    "足": {
-      "char": "跟",
-      "bopomofo": "ㄍㄣ",
-      "words": [
-        "跟隨",
-        "高跟鞋",
-        "跟班"
-      ]
-    },
-    "釒": {
-      "char": "銀",
-      "bopomofo": "ㄧㄣˊ",
-      "words": [
-        "銀行",
-        "銀牌",
-        "銀色"
-      ]
-    }
-  },
-  "各": {
-    "忄": {
-      "char": "恪",
-      "bopomofo": "ㄎㄜˋ",
-      "words": [
-        "恪守",
-        "恪遵",
-        "有恪"
-      ]
-    },
-    "木": {
-      "char": "格",
-      "bopomofo": "ㄍㄜˊ",
-      "words": [
-        "窗格",
-        "方格",
-        "三格"
-      ]
-    },
-    "氵": {
-      "char": "洛",
-      "bopomofo": "ㄌㄨㄛˋ",
-      "words": [
-        "洛水",
-        "洛陽"
-      ]
-    },
-    "糸": {
-      "char": "絡",
-      "bopomofo": "ㄌㄠˋ",
-      "words": [
-        "絡色"
+        "杷色"
       ]
     },
     "肉": {
-      "char": "胳",
-      "bopomofo": "ㄍㄜ",
+      "char": "肥",
+      "bopomofo": "ㄈㄟˊ",
       "words": [
-        "胳膊",
-        "胳臂"
+        "肥胖",
+        "肥豬",
+        "肥肉",
+        "肥缺"
       ]
     },
-    "足": {
-      "char": "路",
-      "bopomofo": "ㄌㄨˋ",
+    "艹": {
+      "char": "芭",
+      "bopomofo": "ㄅㄚ",
       "words": [
-        "陸路",
-        "水路",
-        "高速公路",
-        "思路"
+        "芭蕉",
+        "有芭",
+        "芭莨"
       ]
     },
     "釒": {
-      "char": "鉻",
-      "bopomofo": "ㄍㄜˋ",
+      "char": "鈀",
+      "bopomofo": "ㄅㄚ",
       "words": [
-        "鉻色"
-      ]
-    }
-  },
-  "束": {
-    "忄": {
-      "char": "悚",
-      "bopomofo": "ㄙㄨㄥˇ",
-      "words": [
-        "悚色"
-      ]
-    },
-    "木": {
-      "char": "柬",
-      "bopomofo": "ㄐㄧㄢˇ",
-      "words": [
-        "書柬",
-        "請柬"
-      ]
-    },
-    "氵": {
-      "char": "涑",
-      "bopomofo": "ㄙㄨˋ",
-      "words": [
-        "涑水"
+        "鈀色"
       ]
     }
   },
   "少": {
+    "口": {
+      "char": "吵",
+      "bopomofo": "ㄔㄠˇ",
+      "words": [
+        "爭吵",
+        "吵架"
+      ]
+    },
     "扌": {
       "char": "抄",
       "bopomofo": "ㄔㄠ",
@@ -2724,63 +2748,778 @@ const COMBINATIONS = {
       ]
     }
   },
-  "巴": {
-    "扌": {
-      "char": "把",
-      "bopomofo": "ㄅㄚˇ",
+  "及": {
+    "口": {
+      "char": "吸",
+      "bopomofo": "ㄒㄧ",
       "words": [
-        "把手言歡",
-        "把守",
-        "把關"
+        "吸氣",
+        "吸菸"
       ]
     },
-    "木": {
-      "char": "杷",
-      "bopomofo": "˙ㄅㄚ",
+    "土": {
+      "char": "圾",
+      "bopomofo": "ㄐㄧˊ",
       "words": [
-        "杷色"
+        "圾子"
       ]
     },
-    "玉": {
-      "char": "琶",
-      "bopomofo": "˙ㄅㄚ",
+    "氵": {
+      "char": "汲",
+      "bopomofo": "ㄐㄧˊ",
       "words": [
-        "琶色"
+        "汲水",
+        "汲引"
       ]
     },
     "糸": {
-      "char": "絕",
-      "bopomofo": "ㄐㄩㄝˊ",
+      "char": "級",
+      "bopomofo": "ㄐㄧˊ",
       "words": [
-        "斷絕",
-        "隔絕",
-        "杜絕"
-      ]
-    },
-    "肉": {
-      "char": "肥",
-      "bopomofo": "ㄈㄟˊ",
-      "words": [
-        "肥胖",
-        "肥豬",
-        "肥肉",
-        "肥缺"
+        "高級",
+        "特級",
+        "輔導級"
       ]
     },
     "艹": {
-      "char": "芭",
-      "bopomofo": "ㄅㄚ",
+      "char": "芨",
+      "bopomofo": "ㄐㄧˊ",
       "words": [
-        "芭蕉",
-        "有芭",
-        "芭莨"
+        "白芨",
+        "芨屬",
+        "科白芨"
+      ]
+    },
+    "足": {
+      "char": "趿",
+      "bopomofo": "ㄊㄚ",
+      "words": [
+        "趿拉"
+      ]
+    }
+  },
+  "牙": {
+    "口": {
+      "char": "呀",
+      "bopomofo": "ㄒㄧㄚ",
+      "words": [
+        "哎呀"
+      ]
+    },
+    "木": {
+      "char": "枒",
+      "bopomofo": "ㄧㄚˊ",
+      "words": [
+        "枒杈"
+      ]
+    },
+    "艹": {
+      "char": "芽",
+      "bopomofo": "ㄧㄚˊ",
+      "words": [
+        "豆芽",
+        "麥芽",
+        "嫩芽",
+        "肉芽"
+      ]
+    },
+    "言": {
+      "char": "訝",
+      "bopomofo": "ㄧㄚˋ",
+      "words": [
+        "驚訝",
+        "訝異"
+      ]
+    }
+  },
+  "王": {
+    "口": {
+      "char": "呈",
+      "bopomofo": "ㄔㄥˊ",
+      "words": [
+        "呈現",
+        "呈獻"
+      ]
+    },
+    "木": {
+      "char": "枉",
+      "bopomofo": "ㄨㄤˇ",
+      "words": [
+        "枉尺",
+        "贓枉",
+        "枉法"
+      ]
+    },
+    "氵": {
+      "char": "汪",
+      "bopomofo": "ㄨㄤ",
+      "words": [
+        "汪洋",
+        "汪洋大",
+        "一汪"
+      ]
+    },
+    "玉": {
+      "char": "玨",
+      "bopomofo": "ㄐㄩㄝˊ",
+      "words": [
+        "玨子"
+      ]
+    }
+  },
+  "且": {
+    "口": {
+      "char": "咀",
+      "bopomofo": "ㄐㄩˇ",
+      "words": [
+        "咀子"
+      ]
+    },
+    "氵": {
+      "char": "沮",
+      "bopomofo": "ㄐㄩ",
+      "words": [
+        "沮壞",
+        "沮喪",
+        "氣沮"
+      ]
+    },
+    "糸": {
+      "char": "組",
+      "bopomofo": "ㄗㄨˇ",
+      "words": [
+        "小組",
+        "組織",
+        "組閣"
+      ]
+    },
+    "艹": {
+      "char": "苴",
+      "bopomofo": "ㄐㄩ",
+      "words": [
+        "有苴",
+        "苴那",
+        "代有苴"
+      ]
+    },
+    "言": {
+      "char": "詛",
+      "bopomofo": "ㄗㄨˇ",
+      "words": [
+        "詛咒"
+      ]
+    }
+  },
+  "各": {
+    "口": {
+      "char": "咯",
+      "bopomofo": "˙ㄌㄛ",
+      "words": [
+        "咯子"
+      ]
+    },
+    "忄": {
+      "char": "恪",
+      "bopomofo": "ㄎㄜˋ",
+      "words": [
+        "恪守",
+        "恪遵",
+        "有恪"
+      ]
+    },
+    "木": {
+      "char": "格",
+      "bopomofo": "ㄍㄜˊ",
+      "words": [
+        "窗格",
+        "方格",
+        "三格"
+      ]
+    },
+    "氵": {
+      "char": "洛",
+      "bopomofo": "ㄌㄨㄛˋ",
+      "words": [
+        "洛水",
+        "洛陽"
+      ]
+    },
+    "玉": {
+      "char": "珞",
+      "bopomofo": "ㄌㄨㄛˋ",
+      "words": [
+        "珞子"
+      ]
+    },
+    "糸": {
+      "char": "絡",
+      "bopomofo": "ㄌㄠˋ",
+      "words": [
+        "絡色"
+      ]
+    },
+    "肉": {
+      "char": "胳",
+      "bopomofo": "ㄍㄜ",
+      "words": [
+        "胳膊",
+        "胳臂"
+      ]
+    },
+    "足": {
+      "char": "路",
+      "bopomofo": "ㄌㄨˋ",
+      "words": [
+        "陸路",
+        "水路",
+        "高速公路",
+        "思路"
       ]
     },
     "釒": {
-      "char": "鈀",
-      "bopomofo": "ㄅㄚ",
+      "char": "鉻",
+      "bopomofo": "ㄍㄜˋ",
       "words": [
-        "鈀色"
+        "鉻色"
+      ]
+    }
+  },
+  "亥": {
+    "口": {
+      "char": "咳",
+      "bopomofo": "ㄎㄚˇ",
+      "words": [
+        "咳痰",
+        "咳血"
+      ]
+    },
+    "土": {
+      "char": "垓",
+      "bopomofo": "ㄍㄞ",
+      "words": [
+        "垓子"
+      ]
+    },
+    "木": {
+      "char": "核",
+      "bopomofo": "ㄏㄜˊ",
+      "words": [
+        "果核",
+        "細胞核"
+      ]
+    },
+    "言": {
+      "char": "該",
+      "bopomofo": "ㄍㄞ",
+      "words": [
+        "應該",
+        "該處",
+        "該帳"
+      ]
+    }
+  },
+  "艮": {
+    "口": {
+      "char": "哏",
+      "bopomofo": "ㄍㄣˊ",
+      "words": [
+        "逗哏",
+        "抓哏"
+      ]
+    },
+    "土": {
+      "char": "垠",
+      "bopomofo": "ㄧㄣˊ",
+      "words": [
+        "無垠",
+        "一望無垠"
+      ]
+    },
+    "忄": {
+      "char": "恨",
+      "bopomofo": "ㄏㄣˋ",
+      "words": [
+        "恨意",
+        "痛恨",
+        "悔恨"
+      ]
+    },
+    "木": {
+      "char": "根",
+      "bopomofo": "ㄍㄣ",
+      "words": [
+        "樹根",
+        "根本",
+        "根基"
+      ]
+    },
+    "艹": {
+      "char": "茛",
+      "bopomofo": "ㄍㄣˋ",
+      "words": [
+        "毛茛",
+        "茛苕"
+      ]
+    },
+    "足": {
+      "char": "跟",
+      "bopomofo": "ㄍㄣ",
+      "words": [
+        "跟隨",
+        "高跟鞋",
+        "跟班"
+      ]
+    },
+    "釒": {
+      "char": "銀",
+      "bopomofo": "ㄧㄣˊ",
+      "words": [
+        "銀行",
+        "銀牌",
+        "銀色"
+      ]
+    }
+  },
+  "音": {
+    "口": {
+      "char": "喑",
+      "bopomofo": "ㄧㄣ",
+      "words": [
+        "喑啞"
+      ]
+    },
+    "忄": {
+      "char": "意",
+      "bopomofo": "ㄧˋ",
+      "words": [
+        "意思",
+        "春意",
+        "醉意"
+      ]
+    },
+    "扌": {
+      "char": "揞",
+      "bopomofo": "ㄢˇ",
+      "words": [
+        "揞子"
+      ]
+    },
+    "言": {
+      "char": "諳",
+      "bopomofo": "ㄢ",
+      "words": [
+        "不諳",
+        "諳水",
+        "不諳水"
+      ]
+    }
+  },
+  "奐": {
+    "口": {
+      "char": "喚",
+      "bopomofo": "ㄏㄨㄢˋ",
+      "words": [
+        "喚醒",
+        "呼喚",
+        "召喚"
+      ]
+    },
+    "扌": {
+      "char": "換",
+      "bopomofo": "ㄏㄨㄢˋ",
+      "words": [
+        "換錢",
+        "互換",
+        "交換",
+        "更換"
+      ]
+    },
+    "氵": {
+      "char": "渙",
+      "bopomofo": "ㄏㄨㄢˋ",
+      "words": [
+        "渙散"
+      ]
+    }
+  },
+  "馬": {
+    "口": {
+      "char": "嗎",
+      "bopomofo": "˙ㄇㄚ",
+      "words": [
+        "嗎子"
+      ]
+    },
+    "玉": {
+      "char": "瑪",
+      "bopomofo": "ㄇㄚˇ",
+      "words": [
+        "瑪子"
+      ]
+    }
+  },
+  "麻": {
+    "口": {
+      "char": "嘛",
+      "bopomofo": "˙ㄇㄚ",
+      "words": [
+        "嘛子"
+      ]
+    },
+    "扌": {
+      "char": "摩",
+      "bopomofo": "ㄇㄚ",
+      "words": [
+        "摩挲",
+        "摩擦",
+        "觀摩"
+      ]
+    },
+    "糸": {
+      "char": "縻",
+      "bopomofo": "ㄇㄧˊ",
+      "words": [
+        "有縻",
+        "縻元",
+        "代有縻"
+      ]
+    }
+  },
+  "己": {
+    "土": {
+      "char": "圮",
+      "bopomofo": "ㄆㄧˇ",
+      "words": [
+        "傾圮"
+      ]
+    },
+    "忄": {
+      "char": "忌",
+      "bopomofo": "ㄐㄧˋ",
+      "words": [
+        "妒忌",
+        "猜忌",
+        "顧忌"
+      ]
+    },
+    "木": {
+      "char": "杞",
+      "bopomofo": "ㄑㄧˇ",
+      "words": [
+        "杞人憂天",
+        "枸杞"
+      ]
+    },
+    "糸": {
+      "char": "紀",
+      "bopomofo": "ㄐㄧˇ",
+      "words": [
+        "紀錄",
+        "紀念",
+        "世紀"
+      ]
+    },
+    "艹": {
+      "char": "芑",
+      "bopomofo": "ㄑㄧˇ",
+      "words": [
+        "采芑"
+      ]
+    },
+    "言": {
+      "char": "記",
+      "bopomofo": "ㄐㄧˋ",
+      "words": [
+        "日記",
+        "記者",
+        "忘記"
+      ]
+    }
+  },
+  "皮": {
+    "土": {
+      "char": "坡",
+      "bopomofo": "ㄆㄛ",
+      "words": [
+        "山坡",
+        "斜坡",
+        "陡坡"
+      ]
+    },
+    "扌": {
+      "char": "披",
+      "bopomofo": "ㄆㄟ",
+      "words": [
+        "披卷",
+        "披襟",
+        "披頭"
+      ]
+    },
+    "氵": {
+      "char": "波",
+      "bopomofo": "ㄅㄛ",
+      "words": [
+        "海波",
+        "眼波",
+        "秋波"
+      ]
+    },
+    "玉": {
+      "char": "玻",
+      "bopomofo": "ㄅㄛ",
+      "words": [
+        "玻子"
+      ]
+    },
+    "足": {
+      "char": "跛",
+      "bopomofo": "ㄅㄛˇ",
+      "words": [
+        "跛腳"
+      ]
+    }
+  },
+  "或": {
+    "土": {
+      "char": "域",
+      "bopomofo": "ㄩˋ",
+      "words": [
+        "領域",
+        "區域",
+        "地域"
+      ]
+    },
+    "忄": {
+      "char": "惑",
+      "bopomofo": "ㄏㄨㄛˋ",
+      "words": [
+        "疑惑",
+        "迷惑",
+        "誘惑"
+      ]
+    }
+  },
+  "易": {
+    "土": {
+      "char": "埸",
+      "bopomofo": "ㄧˋ",
+      "words": [
+        "埸子"
+      ]
+    },
+    "忄": {
+      "char": "惕",
+      "bopomofo": "ㄊㄧˋ",
+      "words": [
+        "警惕"
+      ]
+    },
+    "足": {
+      "char": "踢",
+      "bopomofo": "ㄊㄧ",
+      "words": [
+        "踢皮",
+        "踢皮球",
+        "踢他"
+      ]
+    },
+    "釒": {
+      "char": "錫",
+      "bopomofo": "ㄒㄧˊ",
+      "words": [
+        "金屬錫",
+        "錫箔紙",
+        "無錫"
+      ]
+    }
+  },
+  "者": {
+    "土": {
+      "char": "堵",
+      "bopomofo": "ㄉㄨˇ",
+      "words": [
+        "堵塞",
+        "一堵牆",
+        "防堵"
+      ]
+    },
+    "木": {
+      "char": "楮",
+      "bopomofo": "ㄔㄨˇ",
+      "words": [
+        "楮樹",
+        "楮紙"
+      ]
+    },
+    "氵": {
+      "char": "渚",
+      "bopomofo": "ㄓㄨˇ",
+      "words": [
+        "江渚",
+        "沙渚"
+      ]
+    },
+    "糸": {
+      "char": "緒",
+      "bopomofo": "ㄒㄩˋ",
+      "words": [
+        "情緒",
+        "思緒",
+        "頭緒"
+      ]
+    },
+    "艹": {
+      "char": "著",
+      "bopomofo": "˙ㄓㄜ",
+      "words": [
+        "著名",
+        "著作",
+        "著急"
+      ]
+    },
+    "言": {
+      "char": "諸",
+      "bopomofo": "ㄓㄨ",
+      "words": [
+        "諸位",
+        "諸多",
+        "諸葛亮"
+      ]
+    }
+  },
+  "唐": {
+    "土": {
+      "char": "塘",
+      "bopomofo": "ㄊㄤˊ",
+      "words": [
+        "池塘",
+        "塘堰"
+      ]
+    },
+    "扌": {
+      "char": "搪",
+      "bopomofo": "ㄊㄤˊ",
+      "words": [
+        "搪塞",
+        "搪瓷"
+      ]
+    },
+    "氵": {
+      "char": "溏",
+      "bopomofo": "ㄊㄤˊ",
+      "words": [
+        "溏便",
+        "溏心"
+      ]
+    }
+  },
+  "夗": {
+    "忄": {
+      "char": "怨",
+      "bopomofo": "ㄩㄢ",
+      "words": [
+        "結怨",
+        "宿怨",
+        "報怨"
+      ]
+    },
+    "艹": {
+      "char": "苑",
+      "bopomofo": "ㄩˋ",
+      "words": [
+        "林苑",
+        "上林苑",
+        "藝苑"
+      ]
+    }
+  },
+  "束": {
+    "忄": {
+      "char": "悚",
+      "bopomofo": "ㄙㄨㄥˇ",
+      "words": [
+        "悚色"
+      ]
+    },
+    "氵": {
+      "char": "涑",
+      "bopomofo": "ㄙㄨˋ",
+      "words": [
+        "涑水"
+      ]
+    }
+  },
+  "工": {
+    "扌": {
+      "char": "扛",
+      "bopomofo": "ㄍㄤ",
+      "words": [
+        "扛行李",
+        "扛重物"
+      ]
+    },
+    "木": {
+      "char": "杠",
+      "bopomofo": "ㄍㄤ",
+      "words": [
+        "杠色"
+      ]
+    },
+    "氵": {
+      "char": "江",
+      "bopomofo": "ㄐㄧㄤ",
+      "words": [
+        "長江",
+        "江河",
+        "江湖"
+      ]
+    },
+    "糸": {
+      "char": "紅",
+      "bopomofo": "ㄍㄨㄥ",
+      "words": [
+        "紅色",
+        "紅花",
+        "紅包"
+      ]
+    },
+    "肉": {
+      "char": "肛",
+      "bopomofo": "ㄍㄤ",
+      "words": [
+        "肛門"
+      ]
+    },
+    "言": {
+      "char": "訌",
+      "bopomofo": "ㄏㄨㄥˊ",
+      "words": [
+        "內訌"
+      ]
+    }
+  },
+  "口": {
+    "扌": {
+      "char": "扣",
+      "bopomofo": "ㄎㄡˋ",
+      "words": [
+        "扣緊",
+        "扣押",
+        "扣留"
+      ]
+    },
+    "木": {
+      "char": "束",
+      "bopomofo": "ㄕㄨˋ",
+      "words": [
+        "光束"
+      ]
+    },
+    "釒": {
+      "char": "釦",
+      "bopomofo": "ㄎㄡˋ",
+      "words": [
+        "釦色"
       ]
     }
   },
@@ -2826,40 +3565,6 @@ const COMBINATIONS = {
         "擺設",
         "設計",
         "設法"
-      ]
-    },
-    "釒": {
-      "char": "鑿",
-      "bopomofo": "ㄗㄠˊ",
-      "words": [
-        "鑿色"
-      ]
-    }
-  },
-  "皮": {
-    "扌": {
-      "char": "披",
-      "bopomofo": "ㄆㄟ",
-      "words": [
-        "披卷",
-        "披襟",
-        "披頭"
-      ]
-    },
-    "氵": {
-      "char": "波",
-      "bopomofo": "ㄅㄛ",
-      "words": [
-        "海波",
-        "眼波",
-        "秋波"
-      ]
-    },
-    "足": {
-      "char": "跛",
-      "bopomofo": "ㄅㄛˇ",
-      "words": [
-        "跛腳"
       ]
     }
   },
@@ -2951,116 +3656,89 @@ const COMBINATIONS = {
       ]
     }
   },
-  "奐": {
+  "軍": {
     "扌": {
-      "char": "換",
-      "bopomofo": "ㄏㄨㄢˋ",
+      "char": "揮",
+      "bopomofo": "ㄏㄨㄟ",
       "words": [
-        "換錢",
-        "互換",
-        "交換",
-        "更換"
+        "揮手",
+        "揮舞",
+        "揮霍"
       ]
     },
     "氵": {
-      "char": "渙",
-      "bopomofo": "ㄏㄨㄢˋ",
+      "char": "渾",
+      "bopomofo": "ㄏㄨㄣˊ",
       "words": [
-        "渙散"
-      ]
-    }
-  },
-  "麻": {
-    "扌": {
-      "char": "摩",
-      "bopomofo": "ㄇㄚ",
-      "words": [
-        "摩挲",
-        "摩擦",
-        "觀摩"
-      ]
-    },
-    "糸": {
-      "char": "縻",
-      "bopomofo": "ㄇㄧˊ",
-      "words": [
-        "有縻",
-        "縻元",
-        "代有縻"
-      ]
-    }
-  },
-  "王": {
-    "肉": {
-      "char": "望",
-      "bopomofo": "ㄨㄤˋ",
-      "words": [
-        "高望",
-        "望遠",
-        "登高望"
-      ]
-    },
-    "木": {
-      "char": "枉",
-      "bopomofo": "ㄨㄤˇ",
-      "words": [
-        "枉尺",
-        "贓枉",
-        "枉法"
-      ]
-    },
-    "氵": {
-      "char": "汪",
-      "bopomofo": "ㄨㄤ",
-      "words": [
-        "汪洋",
-        "汪洋大",
-        "一汪"
-      ]
-    },
-    "玉": {
-      "char": "玉",
-      "bopomofo": "ㄩˋ",
-      "words": [
-        "閃玉",
-        "玉或",
-        "輝玉"
-      ]
-    },
-    "釒": {
-      "char": "金",
-      "bopomofo": "ㄐㄧㄣ",
-      "words": [
-        "金屬",
-        "金屬元",
-        "合金"
-      ]
-    }
-  },
-  "牙": {
-    "木": {
-      "char": "枒",
-      "bopomofo": "ㄧㄚˊ",
-      "words": [
-        "枒杈"
+        "渾身",
+        "渾濁",
+        "渾水摸魚"
       ]
     },
     "艹": {
-      "char": "芽",
-      "bopomofo": "ㄧㄚˊ",
+      "char": "葷",
+      "bopomofo": "ㄏㄨㄣ",
       "words": [
-        "豆芽",
-        "麥芽",
-        "嫩芽",
-        "肉芽"
+        "葷食",
+        "葷菜"
       ]
     },
     "言": {
-      "char": "訝",
-      "bopomofo": "ㄧㄚˋ",
+      "char": "諢",
+      "bopomofo": "ㄏㄨㄣˋ",
       "words": [
-        "驚訝",
-        "訝異"
+        "打諢",
+        "科打諢"
+      ]
+    }
+  },
+  "良": {
+    "肉": {
+      "char": "朗",
+      "bopomofo": "ㄌㄤˇ",
+      "words": [
+        "明朗",
+        "晴朗",
+        "朗誦",
+        "朗讀"
+      ]
+    },
+    "氵": {
+      "char": "浪",
+      "bopomofo": "ㄌㄤˊ",
+      "words": [
+        "海浪",
+        "流浪",
+        "浪費"
+      ]
+    },
+    "玉": {
+      "char": "琅",
+      "bopomofo": "ㄌㄤˊ",
+      "words": [
+        "琅琅上口",
+        "琳琅滿目"
+      ]
+    },
+    "艹": {
+      "char": "莨",
+      "bopomofo": "ㄌㄤˊ",
+      "words": [
+        "莨子"
+      ]
+    },
+    "足": {
+      "char": "踉",
+      "bopomofo": "ㄌㄧㄤˊ",
+      "words": [
+        "踉子"
+      ]
+    },
+    "釒": {
+      "char": "鋃",
+      "bopomofo": "ㄌㄤˊ",
+      "words": [
+        "鋃子"
       ]
     }
   },
@@ -3104,32 +3782,6 @@ const COMBINATIONS = {
       "words": [
         "自詡"
       ]
-    },
-    "足": {
-      "char": "蹋",
-      "bopomofo": "ㄊㄚˋ",
-      "words": [
-        "蹧蹋"
-      ]
-    }
-  },
-  "亥": {
-    "木": {
-      "char": "核",
-      "bopomofo": "ㄏㄜˊ",
-      "words": [
-        "果核",
-        "細胞核"
-      ]
-    },
-    "言": {
-      "char": "該",
-      "bopomofo": "ㄍㄞ",
-      "words": [
-        "應該",
-        "該處",
-        "該帳"
-      ]
     }
   },
   "辛": {
@@ -3149,15 +3801,6 @@ const COMBINATIONS = {
         "莘色"
       ]
     },
-    "糸": {
-      "char": "辮",
-      "bopomofo": "ㄅㄧㄢˋ",
-      "words": [
-        "髮辮",
-        "垂辮",
-        "結辮"
-      ]
-    },
     "釒": {
       "char": "鋅",
       "bopomofo": "ㄒㄧㄣ",
@@ -3165,6 +3808,42 @@ const COMBINATIONS = {
         "中鋅",
         "鋅均",
         "界中鋅"
+      ]
+    }
+  },
+  "宗": {
+    "木": {
+      "char": "棕",
+      "bopomofo": "ㄗㄨㄥ",
+      "words": [
+        "棕色",
+        "棕櫚樹",
+        "椰棕"
+      ]
+    },
+    "氵": {
+      "char": "淙",
+      "bopomofo": "ㄘㄨㄥ",
+      "words": [
+        "淙淙流水",
+        "淙淙"
+      ]
+    },
+    "玉": {
+      "char": "琮",
+      "bopomofo": "ㄘㄨㄥˊ",
+      "words": [
+        "琮璧",
+        "玉琮"
+      ]
+    },
+    "糸": {
+      "char": "綜",
+      "bopomofo": "ㄗㄨㄥˋ",
+      "words": [
+        "綜合",
+        "綜藝",
+        "錯綜複雜"
       ]
     }
   },
@@ -3233,38 +3912,40 @@ const COMBINATIONS = {
       ]
     }
   },
-  "及": {
+  "屯": {
     "氵": {
-      "char": "汲",
-      "bopomofo": "ㄐㄧˊ",
+      "char": "沌",
+      "bopomofo": "ㄉㄨㄣˋ",
       "words": [
-        "汲水",
-        "汲引"
+        "混沌",
+        "混混沌沌"
       ]
     },
     "糸": {
-      "char": "級",
-      "bopomofo": "ㄐㄧˊ",
+      "char": "純",
+      "bopomofo": "ㄓㄨㄣˇ",
       "words": [
-        "高級",
-        "特級",
-        "輔導級"
+        "單純",
+        "純潔",
+        "純真"
       ]
     },
-    "艹": {
-      "char": "芨",
-      "bopomofo": "ㄐㄧˊ",
+    "肉": {
+      "char": "肫",
+      "bopomofo": "ㄓㄨㄣ",
       "words": [
-        "白芨",
-        "芨屬",
-        "科白芨"
+        "雞肫",
+        "鴨肫",
+        "肫肫"
       ]
     },
-    "足": {
-      "char": "趿",
-      "bopomofo": "ㄊㄚ",
+    "釒": {
+      "char": "鈍",
+      "bopomofo": "ㄉㄨㄣˋ",
       "words": [
-        "趿拉"
+        "鈍刀",
+        "鈍器",
+        "遲鈍"
       ]
     }
   },
@@ -3341,17 +4022,6 @@ const COMBINATIONS = {
       ]
     }
   },
-  "片": {
-    "氵": {
-      "char": "淵",
-      "bopomofo": "ㄩㄢ",
-      "words": [
-        "深淵",
-        "臨深淵",
-        "淵源"
-      ]
-    }
-  },
   "骨": {
     "氵": {
       "char": "滑",
@@ -3396,6 +4066,42 @@ const COMBINATIONS = {
       "bopomofo": "ㄓㄣ",
       "words": [
         "診子"
+      ]
+    }
+  },
+  "重": {
+    "肉": {
+      "char": "腫",
+      "bopomofo": "ㄓㄨㄥˇ",
+      "words": [
+        "腫脹",
+        "紅腫",
+        "腫瘤"
+      ]
+    },
+    "艹": {
+      "char": "董",
+      "bopomofo": "ㄉㄨㄥˇ",
+      "words": [
+        "董事長",
+        "董理"
+      ]
+    },
+    "足": {
+      "char": "踵",
+      "bopomofo": "ㄓㄨㄥˇ",
+      "words": [
+        "接踵而來",
+        "踵事增華"
+      ]
+    },
+    "釒": {
+      "char": "鍾",
+      "bopomofo": "ㄓㄨㄥ",
+      "words": [
+        "鍾愛",
+        "鍾情",
+        "姓鍾"
       ]
     }
   },

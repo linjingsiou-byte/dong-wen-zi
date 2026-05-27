@@ -383,6 +383,8 @@ function setupEventListeners() {
         showSetupScreen("speed");
       } else if (mode === "relay") {
         showSetupScreen("relay");
+      } else if (mode === "learn") {
+        showSetupScreen("learn");
       }
     });
   });
